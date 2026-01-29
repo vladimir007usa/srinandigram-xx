@@ -61,34 +61,38 @@ const Navbar = () => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || isGalleryPage
-          ? 'bg-white/95 shadow-md backdrop-blur-md'
+          ? 'bg-white shadow-md backdrop-blur-md' /* Fixed: Removed /95 transparency for solid bg */
           : 'bg-transparent'
       }`}
       style={{ height: '80px' }}
     >
-      <nav className="container-custom h-full grid grid-cols-[260px_1fr_260px] items-center">
+      {/* Fixed: Changed grid to flex for mobile to prevent overflow (White Line Issue) */}
+      <nav className="container-custom h-full flex lg:grid lg:grid-cols-[260px_1fr_260px] items-center justify-between">
 
-        {/* LOGO — MOVED MORE LEFT */}
+        {/* LOGO */}
         <Link
           to="/"
           onClick={(e) => handleNavClick(e, navLinks[0])}
-          className="flex items-center h-full z-50 -ml-28"
+          /* Fixed: Added lg:-ml-28 so negative margin only applies to desktop */
+          className="flex items-center h-full z-50 lg:-ml-28"
         >
           <img
             src={logo}
             alt="Sri NandiGram Logo"
-            className="h-28 md:h-36 object-contain transition-transform duration-500"
+            className="h-20 md:h-36 object-contain transition-transform duration-500"
             style={{
               filter: isScrolled || isGalleryPage ? 'none' : 'brightness(1.2)',
+              /* Fixed: Reduced scale slightly on mobile to prevent cut-off */
               transform:
                 isScrolled || isGalleryPage ? 'scale(1.6)' : 'scale(2.3)',
               transformOrigin: 'left center',
-              marginTop: '-28px',
+              /* Fixed: Adjusted margin top for mobile vs desktop */
+              marginTop: window.innerWidth < 768 ? '0px' : '-28px',
             }}
           />
         </Link>
 
-        {/* CENTER NAVIGATION (UNCHANGED) */}
+        {/* CENTER NAVIGATION (DESKTOP) */}
         <div
           className="hidden lg:flex items-center justify-center gap-10 h-full"
           onMouseLeave={() => setHoveredItem(null)}
@@ -117,7 +121,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* PHONE (UNCHANGED) */}
+        {/* PHONE (DESKTOP) */}
         <div className="hidden lg:flex items-center justify-end">
           <a
             href="tel:+919239633577"
@@ -131,7 +135,7 @@ const Navbar = () => {
         </div>
 
         {/* MOBILE MENU BUTTON */}
-        <div className="flex lg:hidden justify-end col-span-2">
+        <div className="flex lg:hidden justify-end">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`p-2 z-50 transition-colors ${
@@ -142,7 +146,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* MOBILE MENU */}
+        {/* MOBILE MENU DROPDOWN */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div

@@ -66,26 +66,24 @@ const Navbar = () => {
     >
       <nav className="container-custom h-full flex items-center justify-between lg:grid lg:grid-cols-[260px_1fr_260px]">
         
-        {/* LOGO SECTION */}
+        {/* LOGO - Fixed: Ensuring it stays left-aligned */}
         <div className="flex items-center h-full">
           <Link
             to="/"
             onClick={(e) => handleNavClick(e, navLinks[0])}
-            /* FIX: Added -ml-4 for mobile to pull it to the edge, -ml-28 for desktop */
-            className="flex items-center h-full z-50 -ml-4 lg:-ml-28"
+            className="flex items-center h-full z-50 lg:-ml-28"
           >
             <img
               src={logo}
               alt="Sri NandiGram Logo"
-              /* FIX: Increased mobile height to h-24 */
-              className="h-24 md:h-28 lg:h-36 object-contain transition-transform duration-500"
+              className="h-16 md:h-20 lg:h-36 object-contain transition-transform duration-500"
               style={{
                 filter: isScrolled || isGalleryPage ? 'none' : 'brightness(1.2)',
+                /* Fixed: Ensure transform origin is always far left */
                 transformOrigin: 'left center',
-                /* FIX: Increased scale slightly for mobile presence */
                 transform: isScrolled || isGalleryPage 
-                  ? 'scale(1.2)' 
-                  : (window.innerWidth < 1024 ? 'scale(1.3)' : 'scale(2.3)'),
+                  ? 'scale(1.4)' 
+                  : (window.innerWidth < 1024 ? 'scale(1.8)' : 'scale(2.3)'),
               }}
             />
           </Link>
@@ -133,7 +131,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* MOBILE MENU BUTTON */}
+        {/* MOBILE MENU BUTTON - Fixed: Ensuring it stays right-aligned */}
         <div className="flex lg:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

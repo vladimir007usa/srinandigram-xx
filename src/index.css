@@ -120,10 +120,17 @@
   html {
     /* CHANGED: Disabled smooth scrolling by setting to auto */
     scroll-behavior: auto;
+    /* FIX: Added to prevent white side bar */
+    overflow-x: hidden;
+    width: 100%;
   }
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    /* FIX: Added to prevent white side bar */
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
   }
 
   h1, h2, h3, h4, h5, h6 {

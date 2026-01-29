@@ -66,24 +66,27 @@ const Navbar = () => {
     >
       <nav className="container-custom h-full flex items-center justify-between lg:grid lg:grid-cols-[260px_1fr_260px]">
         
-        {/* LOGO - Fixed: Ensuring it stays left-aligned */}
+        {/* LOGO SECTION */}
         <div className="flex items-center h-full">
           <Link
             to="/"
             onClick={(e) => handleNavClick(e, navLinks[0])}
-            className="flex items-center h-full z-50 lg:-ml-28"
+            /* FIX: Removed negative margin on desktop (lg:ml-0) to stop overlap */
+            className="flex items-center h-full z-50 -ml-4 lg:ml-0"
           >
             <img
               src={logo}
               alt="Sri NandiGram Logo"
-              className="h-16 md:h-20 lg:h-36 object-contain transition-transform duration-500"
+              className="h-24 md:h-28 lg:h-20 object-contain transition-transform duration-500"
               style={{
                 filter: isScrolled || isGalleryPage ? 'none' : 'brightness(1.2)',
-                /* Fixed: Ensure transform origin is always far left */
                 transformOrigin: 'left center',
+                /* FIX: Different scaling for Mobile vs Laptop */
                 transform: isScrolled || isGalleryPage 
-                  ? 'scale(1.4)' 
-                  : (window.innerWidth < 1024 ? 'scale(1.8)' : 'scale(2.3)'),
+                  ? (window.innerWidth < 1024 ? 'scale(1.2)' : 'scale(1.5)') 
+                  : (window.innerWidth < 1024 ? 'scale(1.3)' : 'scale(2.5)'),
+                /* FIX: Added margin top only for Desktop to center it nicely */
+                marginTop: window.innerWidth < 1024 ? '0px' : '10px',
               }}
             />
           </Link>
@@ -131,7 +134,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* MOBILE MENU BUTTON - Fixed: Ensuring it stays right-aligned */}
+        {/* MOBILE MENU BUTTON */}
         <div className="flex lg:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

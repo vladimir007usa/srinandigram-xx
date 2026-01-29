@@ -1,10 +1,22 @@
+/* Resetting default Vite/React styles to allow the HeroSection to be full-width */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left; /* Changed from center to support your new left-aligned design */
 }
 
+/* Ensure the body doesn't have horizontal scroll */
+body {
+  margin: 0;
+  display: flex;
+  place-items: start;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Keep logo animations if you are using them elsewhere */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -12,10 +24,7 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #d4a657aa); /* Updated to your gold theme color */
 }
 
 @keyframes logo-spin {
@@ -28,15 +37,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
+  .logo-spin-effect {
     animation: logo-spin infinite 20s linear;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

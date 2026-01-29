@@ -50,12 +50,14 @@ const LocationSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-secondary font-heading font-semibold text-sm uppercase tracking-wider">
+          <span className="font-heading font-bold text-[#d5b474] 
+                         text-2xl md:text-3xl lg:text-4xl 
+                         tracking-widest mb-2 uppercase">
             Location
           </span>
-          <h2 className="section-title mt-4 mb-6">
-            Why <span className="text-gradient-gold">Mayapur</span>?
-          </h2>
+          <h2 className="font-heading font-semibold text-lg md:text-xl text-[#2a1d0d] mb-4">
+  <span className="text-[#d5b474]">Why</span> Mayapur?
+</h2>
           <p className="section-subtitle mx-auto">
             Mayapur is one of the most spiritually significant places in India, attracting millions of devotees and seekers from around the world.
           </p>
@@ -126,7 +128,7 @@ const LocationSection = () => {
                     Nadia District, West Bengal, India
                   </p>
                   <a
-                    href="https://maps.google.com/?q=Mayapur+West+Bengal+India"
+                    href="https://maps.app.goo.gl/RAyitsENAQxcZLBK6"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 mt-4 text-secondary font-heading font-semibold text-sm hover:underline"

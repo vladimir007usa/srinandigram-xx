@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, X } from 'lucide-react';
+import { MessageCircle, X } from 'lucide-react'; // Changed Phone to MessageCircle
 
 const FloatingCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,11 +34,13 @@ const FloatingCTA = () => {
                 className="absolute bottom-16 right-0 flex flex-col gap-3"
               >
                 <a
-                  href="tel:+91XXXXXXXXXX"
-                  className="flex items-center gap-3 px-4 py-3 bg-primary text-primary-foreground rounded-full shadow-elevated hover:shadow-gold transition-shadow"
+                  href="https://wa.me/919239633577" // Updated to WhatsApp link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-4 py-3 bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-xl transition-shadow"
                 >
-                  <Phone className="w-5 h-5" />
-                  <span className="font-heading font-medium text-sm whitespace-nowrap">Call Now</span>
+                  <MessageCircle className="w-5 h-5 fill-current" />
+                  <span className="font-heading font-medium text-sm whitespace-nowrap">Message Us</span>
                 </a>
               </motion.div>
             )}
@@ -50,13 +52,13 @@ const FloatingCTA = () => {
               className={`p-4 rounded-full shadow-elevated transition-all duration-300 ${
                 isExpanded
                   ? 'bg-muted text-foreground rotate-45'
-                  : 'bg-secondary text-secondary-foreground animate-pulse hover:animate-none'
+                  : 'bg-[#25D366] text-white animate-pulse hover:animate-none' 
               }`}
             >
               {isExpanded ? (
                 <X className="w-6 h-6" />
               ) : (
-                <Phone className="w-6 h-6" />
+                <MessageCircle className="w-6 h-6 fill-current" />
               )}
             </button>
           </div>

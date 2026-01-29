@@ -1,21 +1,27 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
+import { useLocation, Link } from 'react-router-dom';
+import logo from '@/assets/logo.png';
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Features', href: '#features' },
-  { name: 'Properties', href: '#properties' },
-  { name: 'Location', href: '#location' },
-  { name: 'Gallery', href: '#gallery' },
-  { name: 'Pricing', href: '#pricing' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/', id: 'home' },
+  { name: 'Properties', href: '/#properties', id: 'properties' },
+  { name: 'Our Story', href: '/#about', id: 'about' },
+  { name: 'Location', href: '/#location', id: 'location' },
+  { name: 'Contact Us', href: '/#contact', id: 'contact' },
 ];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const location = useLocation();
+  const isGalleryPage =
+    location.pathname === '/gallery' || location.pathname.includes('/villas');
+
+  const [activeItem, setActiveItem] = useState('Home');
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,91 +31,146 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent, link: typeof navLinks[0]) => {
+    setActiveItem(link.name);
+    setIsMobileMenuOpen(false);
+
+    if (!isGalleryPage && link.href.includes('#')) {
+      e.preventDefault();
+      const elementId = link.href.split('#')[1];
+      const element = document.getElementById(elementId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'auto' });
+        window.history.pushState(null, '', link.href);
+      }
+    }
+  };
+
+  const getTextColor = (linkName: string) => {
+    const isActiveOrHovered =
+      hoveredItem === linkName || activeItem === linkName;
+
+    if (isActiveOrHovered) return 'text-[#C19A6B]';
+    if (isScrolled || isGalleryPage) return 'text-[#5C3A1E]';
+    return 'text-white';
+  };
+
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/95 backdrop-blur-md shadow-soft' : 'bg-transparent'
+        isScrolled || isGalleryPage
+          ? 'bg-white/95 shadow-md backdrop-blur-md'
+          : 'bg-transparent'
       }`}
+      style={{ height: '80px' }}
     >
-      <nav className="container-custom section-padding !py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a href="#home" className="flex items-center gap-2">
-            <span className={`font-heading text-2xl font-bold ${isScrolled ? 'text-primary' : 'text-cream'}`}>
-              Sri NandiGram
-            </span>
-          </a>
+      <nav className="container-custom h-full grid grid-cols-[260px_1fr_260px] items-center">
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className={`font-heading text-sm font-medium transition-colors hover:text-secondary ${
-                  isScrolled ? 'text-foreground' : 'text-cream'
-                }`}
+        {/* LOGO — MOVED MORE LEFT */}
+        <Link
+          to="/"
+          onClick={(e) => handleNavClick(e, navLinks[0])}
+          className="flex items-center h-full z-50 -ml-28"
+        >
+          <img
+            src={logo}
+            alt="Sri NandiGram Logo"
+            className="h-28 md:h-36 object-contain transition-transform duration-500"
+            style={{
+              filter: isScrolled || isGalleryPage ? 'none' : 'brightness(1.2)',
+              transform:
+                isScrolled || isGalleryPage ? 'scale(1.6)' : 'scale(2.3)',
+              transformOrigin: 'left center',
+              marginTop: '-28px',
+            }}
+          />
+        </Link>
+
+        {/* CENTER NAVIGATION (UNCHANGED) */}
+        <div
+          className="hidden lg:flex items-center justify-center gap-10 h-full"
+          onMouseLeave={() => setHoveredItem(null)}
+        >
+          {navLinks.map((link) => (
+            <div key={link.name} className="relative h-full flex items-center">
+              <Link
+                to={link.href}
+                onClick={(e) => handleNavClick(e, link)}
+                onMouseEnter={() => setHoveredItem(link.name)}
+                className={`font-heading text-sm font-bold uppercase tracking-wider transition-colors relative py-1 ${getTextColor(
+                  link.name
+                )}`}
               >
                 {link.name}
-              </a>
-            ))}
-          </div>
+                {(hoveredItem === link.name ||
+                  (!hoveredItem && activeItem === link.name)) && (
+                  <motion.div
+                    layoutId="top-nav-line"
+                    className="absolute -top-6 left-0 right-0 h-[3px] bg-[#C19A6B]"
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                  />
+                )}
+              </Link>
+            </div>
+          ))}
+        </div>
 
-          {/* CTA Button */}
-          <div className="hidden lg:flex items-center gap-4">
-            <a
-              href="tel:+91XXXXXXXXXX"
-              className={`flex items-center gap-2 font-heading text-sm font-medium ${
-                isScrolled ? 'text-primary' : 'text-cream'
-              }`}
-            >
-              <Phone className="w-4 h-4" />
-              <span>+91 XXXXX XXXXX</span>
-            </a>
-            <a href="#contact" className="btn-secondary !py-3 !px-6 text-sm">
-              Book a Visit
-            </a>
-          </div>
+        {/* PHONE (UNCHANGED) */}
+        <div className="hidden lg:flex items-center justify-end">
+          <a
+            href="tel:+919239633577"
+            className={`flex items-center gap-2 font-heading text-sm font-bold transition-colors hover:text-[#C19A6B] ${
+              isScrolled || isGalleryPage ? 'text-[#003366]' : 'text-white'
+            }`}
+          >
+            <Phone className="w-4 h-4" />
+            <span>+91 9239633577</span>
+          </a>
+        </div>
 
-          {/* Mobile Menu Button */}
+        {/* MOBILE MENU BUTTON */}
+        <div className="flex lg:hidden justify-end col-span-2">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 ${isScrolled ? 'text-primary' : 'text-cream'}`}
+            className={`p-2 z-50 transition-colors ${
+              isScrolled || isGalleryPage ? 'text-[#5C3A1E]' : 'text-white'
+            }`}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* MOBILE MENU */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden mt-4 pb-4"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="absolute top-[80px] left-0 right-0 lg:hidden px-4"
             >
-              <div className="flex flex-col gap-4 bg-card rounded-xl p-6 shadow-elevated">
+              <div className="flex flex-col gap-4 bg-white rounded-xl p-6 shadow-2xl border border-gray-100">
                 {navLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.name}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="font-heading text-sm font-medium text-foreground hover:text-secondary transition-colors"
+                    to={link.href}
+                    onClick={(e) => handleNavClick(e, link)}
+                    className={`font-heading text-sm font-bold uppercase tracking-wide ${
+                      activeItem === link.name
+                        ? 'text-[#C19A6B]'
+                        : 'text-[#5C3A1E]'
+                    }`}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 ))}
-                <hr className="border-border" />
-                <a href="#contact" className="btn-secondary !py-3 text-center text-sm">
-                  Book a Visit
-                </a>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
+
       </nav>
     </motion.header>
   );

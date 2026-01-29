@@ -1,35 +1,58 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowRight, Maximize2, Home, Building2, Map } from 'lucide-react';
-import plotsImg from '@/assets/plots.jpg';
-import villaImg from '@/assets/villa.jpg';
-import heroBanner from '@/assets/hero-banner.jpg';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Building2, Home, Map, MessageCircle } from 'lucide-react';
+
+import plotsImg from '@/assets/plots.jpg';            // Apartment image
+import villaImg from '@/assets/villa.jpg';            // Villa / Row house image
+import plotsAllocation from '@/assets/plots allocation.jpg';
 
 const properties = [
   {
-    title: 'Premium Plots',
-    description: 'Build your dream home on our meticulously planned residential plots with all modern amenities.',
-    image: plotsImg,
-    icon: Map,
-    features: ['Vastu-compliant layouts', 'Road connectivity', 'Underground utilities', 'Landscaped surroundings'],
-    cta: 'View Plots',
-  },
-  {
-    title: 'Luxury Villas',
-    description: 'Ready-to-move premium villas designed with traditional aesthetics and contemporary comfort.',
-    image: villaImg,
+    title: 'Premium Villa',
+    description:
+      'A villa in a secured gated community, built for comfort, care, and close family moments.',
+    image: plotsImg, // ✅ Apartment image moved here
     icon: Home,
-    features: ['2-4 BHK options', 'Private gardens', 'Modern architecture', 'Premium finishes'],
+    features: [
+      'Vastu-compliant layouts',
+      'Road connectivity',
+      'High Glass Coverage',
+      'Gated Community',
+    ],
     cta: 'Explore Villas',
+    path: '/properties/villas',
   },
   {
-    title: 'Open Land',
-    description: 'Invest in larger land parcels for farming, ashrams, or custom development projects.',
-    image: heroBanner,
-    icon: Maximize2,
-    features: ['Agricultural land', 'Flexible usage', 'Scenic views', 'Long-term investment'],
-    cta: 'Learn More',
+    title: 'Luxury Apartments',
+    description:
+      'These apartments suit families, professionals, and investors seeking long-term value.',
+    image: villaImg, // ✅ Villa image moved here
+    icon: Building2,
+    features: [
+      '1-3 BHK Options',
+      'No Sharer Walls',
+      'Vastu - compliant design',
+      'Premium finishes',
+    ],
+    cta: 'Explore Apartments',
+    path: '/properties/apartments',
+  },
+  {
+    title: 'Plots Allocation',
+    description:
+      'Not just land — the beginning of everything you imagine. A place where your future takes shape.',
+    image: plotsAllocation,
+    icon: Map,
+    features: [
+      'Custom Size',
+      'Road Connectivity',
+      'Free Planing',
+      'Inside Community Sector',
+    ],
+    cta: 'View Map',
+    path: '/properties/map',
   },
 ];
 
@@ -37,28 +60,29 @@ const PropertiesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
+  const whatsappUrl = `https://wa.me/919239633577?text=${encodeURIComponent(
+    'Hello! I am interested in Sri NandiGram properties.'
+  )}`;
+
   return (
     <section id="properties" className="section-padding bg-background" ref={ref}>
       <div className="container-custom">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-secondary font-heading font-semibold text-sm uppercase tracking-wider">
+          <span className="font-heading font-bold text-[#d5b474] 
+                         text-2xl md:text-3xl lg:text-4xl 
+                         tracking-widest mb-2 uppercase">
             Our Offerings
           </span>
-          <h2 className="section-title mt-4 mb-6">
-            Find Your <span className="text-gradient-gold">Perfect Property</span>
-          </h2>
-          <p className="section-subtitle mx-auto">
-            Choose from premium plots, luxury villas, or open land to create your spiritual haven.
-          </p>
+          <h2 className="font-heading font-semibold text-lg md:text-xl">
+  <span className="text-[#d5b474]">Find Your</span> Perfect Property
+</h2>
         </motion.div>
 
-        {/* Properties Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {properties.map((property, index) => (
             <motion.div
@@ -66,25 +90,23 @@ const PropertiesSection = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="card-elevated group"
+              className="card-elevated group flex flex-col h-full"
             >
-              {/* Image */}
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-64 overflow-hidden">
                 <img
                   src={property.image}
                   alt={property.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brown-dark/60 to-transparent" />
                 <div className="absolute bottom-4 left-4">
-                  <div className="p-3 bg-secondary rounded-xl">
+                  <div className="p-3 bg-secondary rounded-xl shadow-lg">
                     <property.icon className="w-6 h-6 text-secondary-foreground" />
                   </div>
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <h3 className="font-heading text-xl font-bold text-foreground mb-3">
                   {property.title}
                 </h3>
@@ -92,48 +114,43 @@ const PropertiesSection = () => {
                   {property.description}
                 </p>
 
-                {/* Features */}
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-2 mb-8 flex-grow">
                   {property.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <li
+                      key={feature}
+                      className="flex items-center gap-2 text-sm text-muted-foreground"
+                    >
                       <div className="w-1.5 h-1.5 bg-secondary rounded-full" />
                       {feature}
                     </li>
                   ))}
                 </ul>
 
-                {/* CTA */}
-                <a
-                  href="#contact"
-                  className="flex items-center gap-2 text-primary font-heading font-semibold text-sm group-hover:text-secondary transition-colors"
+                <Link
+                  to={property.path}
+                  className="mt-auto inline-flex items-center justify-center w-full py-3 px-6 bg-secondary text-secondary-foreground font-heading font-bold text-sm rounded-xl shadow-md hover:bg-secondary/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 group/btn"
                 >
                   {property.cta}
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* CTA Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-16 p-8 md:p-12 bg-primary rounded-2xl text-center"
-        >
+        <motion.div className="mt-16 p-8 md:p-12 bg-primary rounded-2xl text-center">
           <h3 className="font-heading text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
-            Ready to Own Your Piece of Paradise?
+            Ready to Own Your Dream Property?
           </h3>
-          <p className="text-primary-foreground/80 mb-8 max-w-xl mx-auto">
-            Schedule a site visit to experience the serenity of Sri NandiGram firsthand.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#contact" className="btn-secondary">
-              Request a Quote
-            </a>
-            <a href="tel:+91XXXXXXXXXX" className="btn-outline !border-primary-foreground !text-primary-foreground hover:!bg-primary-foreground/10">
-              Call Now
+          <div className="flex justify-center">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary px-10 flex items-center gap-2"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Send a message
             </a>
           </div>
         </motion.div>

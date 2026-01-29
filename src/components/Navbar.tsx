@@ -47,9 +47,7 @@ const Navbar = () => {
   };
 
   const getTextColor = (linkName: string) => {
-    const isActiveOrHovered =
-      hoveredItem === linkName || activeItem === linkName;
-
+    const isActiveOrHovered = hoveredItem === linkName || activeItem === linkName;
     if (isActiveOrHovered) return 'text-[#C19A6B]';
     if (isScrolled || isGalleryPage) return 'text-[#5C3A1E]';
     return 'text-white';
@@ -61,36 +59,35 @@ const Navbar = () => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || isGalleryPage
-          ? 'bg-white shadow-md backdrop-blur-md' /* Fixed: Removed /95 transparency for solid bg */
+          ? 'bg-white shadow-md'
           : 'bg-transparent'
       }`}
       style={{ height: '80px' }}
     >
-      {/* Fixed: Changed grid to flex for mobile to prevent overflow (White Line Issue) */}
-      <nav className="container-custom h-full flex lg:grid lg:grid-cols-[260px_1fr_260px] items-center justify-between">
-
-        {/* LOGO */}
-        <Link
-          to="/"
-          onClick={(e) => handleNavClick(e, navLinks[0])}
-          /* Fixed: Added lg:-ml-28 so negative margin only applies to desktop */
-          className="flex items-center h-full z-50 lg:-ml-28"
-        >
-          <img
-            src={logo}
-            alt="Sri NandiGram Logo"
-            className="h-20 md:h-36 object-contain transition-transform duration-500"
-            style={{
-              filter: isScrolled || isGalleryPage ? 'none' : 'brightness(1.2)',
-              /* Fixed: Reduced scale slightly on mobile to prevent cut-off */
-              transform:
-                isScrolled || isGalleryPage ? 'scale(1.6)' : 'scale(2.3)',
-              transformOrigin: 'left center',
-              /* Fixed: Adjusted margin top for mobile vs desktop */
-              marginTop: window.innerWidth < 768 ? '0px' : '-28px',
-            }}
-          />
-        </Link>
+      <nav className="container-custom h-full flex items-center justify-between lg:grid lg:grid-cols-[260px_1fr_260px]">
+        
+        {/* LOGO - Fixed: Ensuring it stays left-aligned */}
+        <div className="flex items-center h-full">
+          <Link
+            to="/"
+            onClick={(e) => handleNavClick(e, navLinks[0])}
+            className="flex items-center h-full z-50 lg:-ml-28"
+          >
+            <img
+              src={logo}
+              alt="Sri NandiGram Logo"
+              className="h-16 md:h-20 lg:h-36 object-contain transition-transform duration-500"
+              style={{
+                filter: isScrolled || isGalleryPage ? 'none' : 'brightness(1.2)',
+                /* Fixed: Ensure transform origin is always far left */
+                transformOrigin: 'left center',
+                transform: isScrolled || isGalleryPage 
+                  ? 'scale(1.4)' 
+                  : (window.innerWidth < 1024 ? 'scale(1.8)' : 'scale(2.3)'),
+              }}
+            />
+          </Link>
+        </div>
 
         {/* CENTER NAVIGATION (DESKTOP) */}
         <div
@@ -121,7 +118,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* PHONE (DESKTOP) */}
+        {/* PHONE (DESKTOP ONLY) */}
         <div className="hidden lg:flex items-center justify-end">
           <a
             href="tel:+919239633577"
@@ -134,15 +131,15 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* MOBILE MENU BUTTON */}
-        <div className="flex lg:hidden justify-end">
+        {/* MOBILE MENU BUTTON - Fixed: Ensuring it stays right-aligned */}
+        <div className="flex lg:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`p-2 z-50 transition-colors ${
               isScrolled || isGalleryPage ? 'text-[#5C3A1E]' : 'text-white'
             }`}
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
           </button>
         </div>
 
@@ -153,7 +150,7 @@ const Navbar = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="absolute top-[80px] left-0 right-0 lg:hidden px-4"
+              className="absolute top-[80px] left-0 right-0 lg:hidden px-4 z-40"
             >
               <div className="flex flex-col gap-4 bg-white rounded-xl p-6 shadow-2xl border border-gray-100">
                 {navLinks.map((link) => (
@@ -161,20 +158,22 @@ const Navbar = () => {
                     key={link.name}
                     to={link.href}
                     onClick={(e) => handleNavClick(e, link)}
-                    className={`font-heading text-sm font-bold uppercase tracking-wide ${
-                      activeItem === link.name
-                        ? 'text-[#C19A6B]'
-                        : 'text-[#5C3A1E]'
+                    className={`font-heading text-base font-bold uppercase tracking-wide py-2 ${
+                      activeItem === link.name ? 'text-[#C19A6B]' : 'text-[#5C3A1E]'
                     }`}
                   >
                     {link.name}
                   </Link>
                 ))}
+                <hr className="border-gray-100" />
+                <a href="tel:+919239633577" className="flex items-center gap-3 text-[#003366] font-bold">
+                  <Phone className="w-5 h-5" />
+                  +91 9239633577
+                </a>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-
       </nav>
     </motion.header>
   );

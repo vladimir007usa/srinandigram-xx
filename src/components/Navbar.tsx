@@ -63,17 +63,16 @@ const Navbar = () => {
         ${isScrolled || isGalleryPage
           ? 'bg-white/95 shadow-md backdrop-blur-md'
           : 'bg-transparent'}
-        overflow-visible lg:overflow-hidden
+        h-auto lg:h-[80px]
       `}
-      style={{ height: '80px' }}
     >
-      <nav className="container-custom h-full grid grid-cols-[260px_1fr_260px] items-center">
+      <nav className="container-custom grid grid-cols-[1fr_auto] lg:grid-cols-[260px_1fr_260px] items-center px-4 lg:px-0 py-2 lg:py-0">
 
         {/* LOGO */}
         <Link
           to="/"
           onClick={(e) => handleNavClick(e, navLinks[0])}
-          className="flex items-center h-full z-50 -ml-28"
+          className="flex items-center z-50 lg:-ml-28"
         >
           <img
             src={logo}
@@ -84,7 +83,7 @@ const Navbar = () => {
               transform:
                 isScrolled || isGalleryPage ? 'scale(1.6)' : 'scale(2.3)',
               transformOrigin: 'left center',
-              marginTop: window.innerWidth < 1024 ? '0px' : '-28px',
+              marginTop: '-28px',
             }}
           />
         </Link>
@@ -110,7 +109,6 @@ const Navbar = () => {
                   <motion.div
                     layoutId="top-nav-line"
                     className="absolute -top-6 left-0 right-0 h-[3px] bg-[#C19A6B]"
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
                 )}
               </Link>
@@ -132,14 +130,14 @@ const Navbar = () => {
         </div>
 
         {/* MOBILE MENU BUTTON */}
-        <div className="flex lg:hidden justify-end col-span-2">
+        <div className="flex lg:hidden justify-end">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`p-2 z-50 transition-colors ${
               isScrolled || isGalleryPage ? 'text-[#5C3A1E]' : 'text-white'
             }`}
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
 
@@ -150,19 +148,15 @@ const Navbar = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="absolute top-[80px] left-0 right-0 lg:hidden px-4"
+              className="absolute top-full left-0 right-0 lg:hidden px-4"
             >
-              <div className="flex flex-col gap-4 bg-white rounded-xl p-6 shadow-2xl border border-gray-100">
+              <div className="flex flex-col gap-4 bg-white rounded-xl p-6 shadow-2xl">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     to={link.href}
                     onClick={(e) => handleNavClick(e, link)}
-                    className={`font-heading text-sm font-bold uppercase tracking-wide ${
-                      activeItem === link.name
-                        ? 'text-[#C19A6B]'
-                        : 'text-[#5C3A1E]'
-                    }`}
+                    className="font-heading text-sm font-bold uppercase tracking-wide text-[#5C3A1E]"
                   >
                     {link.name}
                   </Link>

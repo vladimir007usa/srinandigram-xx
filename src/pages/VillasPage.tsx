@@ -200,7 +200,7 @@ const VillasPage = () => {
       </section>
 
       {/* ✅ ENQUIRY SECTION */}
-      <section className="container-custom pb-16">
+      <section className="container-custom pb-24">
         <div className="bg-[#8B5E3C] rounded-[3rem] px-6 py-16 text-center text-white shadow-xl">
           <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
             Inquire About Your Future Villas
@@ -218,16 +218,6 @@ const VillasPage = () => {
           </a>
         </div>
       </section>
-
-      {/* ✅ BACK TO PROPERTY BUTTON (LOWER PART) */}
-      <div className="container-custom pb-20 flex justify-center">
-        <Link 
-          to="/#properties" 
-          className="flex items-center gap-2 text-[#5C3A1E] font-bold hover:text-[#8B5E3C] transition-colors text-lg"
-        >
-          <ArrowLeft className="w-5 h-5" /> Back to Properties
-        </Link>
-      </div>
     </div>
   );
 };

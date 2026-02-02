@@ -59,16 +59,17 @@ const Navbar = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || isGalleryPage
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
+        ${isScrolled || isGalleryPage
           ? 'bg-white/95 shadow-md backdrop-blur-md'
-          : 'bg-transparent'
-      }`}
+          : 'bg-transparent'}
+        overflow-visible lg:overflow-hidden
+      `}
       style={{ height: '80px' }}
     >
       <nav className="container-custom h-full grid grid-cols-[260px_1fr_260px] items-center">
 
-        {/* LOGO — MOVED MORE LEFT */}
+        {/* LOGO */}
         <Link
           to="/"
           onClick={(e) => handleNavClick(e, navLinks[0])}
@@ -83,12 +84,12 @@ const Navbar = () => {
               transform:
                 isScrolled || isGalleryPage ? 'scale(1.6)' : 'scale(2.3)',
               transformOrigin: 'left center',
-              marginTop: '-28px',
+              marginTop: window.innerWidth < 1024 ? '0px' : '-28px',
             }}
           />
         </Link>
 
-        {/* CENTER NAVIGATION (UNCHANGED) */}
+        {/* CENTER NAVIGATION */}
         <div
           className="hidden lg:flex items-center justify-center gap-10 h-full"
           onMouseLeave={() => setHoveredItem(null)}
@@ -117,7 +118,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* PHONE (UNCHANGED) */}
+        {/* PHONE */}
         <div className="hidden lg:flex items-center justify-end">
           <a
             href="tel:+919239633577"

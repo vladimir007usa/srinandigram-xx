@@ -171,30 +171,21 @@ const VillasPage = () => {
           Experience The Villas
         </h2>
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Video 1 */}
           <div className="rounded-2xl overflow-hidden shadow-xl aspect-video bg-black">
-            <iframe 
+            <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/sJ2gtAJeNtY?si=o2NghfO1IQeUGxQA" 
-              title="Villa Video 1" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerPolicy="strict-origin-when-cross-origin" 
+              src="https://www.youtube.com/embed/sJ2gtAJeNtY"
+              title="Villa Video 1"
               allowFullScreen
-            ></iframe>
+            />
           </div>
-
-          {/* Video 2 */}
           <div className="rounded-2xl overflow-hidden shadow-xl aspect-video bg-black">
-            <iframe 
+            <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/UB3aj6VLmZE?si=VC4Y1HcCF1kF2_uD" 
-              title="Villa Video 2" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerPolicy="strict-origin-when-cross-origin" 
+              src="https://www.youtube.com/embed/UB3aj6VLmZE"
+              title="Villa Video 2"
               allowFullScreen
-            ></iframe>
+            />
           </div>
         </div>
       </section>
@@ -216,6 +207,19 @@ const VillasPage = () => {
           >
             Contact Sales Team
           </a>
+        </div>
+      </section>
+
+      {/* ✅ BACK TO PROPERTIES (NEW – LAST SECTION) */}
+      <section className="container-custom pb-24">
+        <div className="text-center">
+          <Link
+            to="/#properties"
+            className="inline-flex items-center gap-3 text-[#5C3A1E] font-heading font-bold text-lg hover:text-[#C19A6B] transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Back to Properties
+          </Link>
         </div>
       </section>
     </div>

@@ -12,7 +12,7 @@ const WhatsAppIcon = () => (
 
 const TelegramIcon = () => (
   <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
-    <path d="M9.036 15.464l-.375 5.296c.536 0 .768-.232 1.046-.508l2.508-2.38 5.204 3.808c.954.526 1.628.25 1.87-.883l3.39-15.92h.001c.297-1.38-.5-1.92-1.43-1.57L1.2 9.71c-1.345.526-1.324 1.28-.244 1.61l5.165 1.61L18.1 6.48c.56-.37 1.07-.165.65.205z" />
+    <path d="M9.036 15.464l-.375 5.296c.536 0 .768-.232 1.046-.508l2.508-2.38 5.204 3.808c.954.526 1.628.25 1.87-.883l3.39-15.92c.297-1.38-.5-1.92-1.43-1.57L1.2 9.71c-1.345.526-1.324 1.28-.244 1.61l5.165 1.61L18.1 6.48c.56-.37 1.07-.165.65.205z" />
   </svg>
 );
 
@@ -48,49 +48,33 @@ const Footer = () => {
     <footer className="bg-primary text-primary-foreground">
       <div className="container-custom section-padding !pb-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+          
           {/* Brand */}
           <div>
             <h3 className="font-para text-2xl tracking-wider font-bold mb-4">
               Sri NandiGram
             </h3>
-
             <p className="text-primary-foreground/70 text-sm mb-6">
               A premium gated community in Mayapur offering luxury villas,
               plots, and spiritual living in harmony with nature.
             </p>
-
             <div className="flex gap-4">
-              <a 
-                href="https://wa.me/919239633577" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="p-3 bg-primary-foreground/10 rounded-lg hover:bg-secondary transition-colors"
-              >
+              <a href="https://wa.me/919239633577" target="_blank" rel="noopener noreferrer" className="p-3 bg-primary-foreground/10 rounded-lg hover:bg-secondary transition-colors">
                 <WhatsAppIcon />
               </a>
-              <a 
-                href="https://t.me/+eysRT04fXCAwNjRl" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="p-3 bg-primary-foreground/10 rounded-lg hover:bg-secondary transition-colors"
-              >
+              <a href="https://t.me/+eysRT04fXCAwNjRl" target="_blank" rel="noopener noreferrer" className="p-3 bg-primary-foreground/10 rounded-lg hover:bg-secondary transition-colors">
                 <TelegramIcon />
               </a>
-              <a 
-                href="https://www.youtube.com/@srinandigram" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="p-3 bg-primary-foreground/10 rounded-lg hover:bg-secondary transition-colors"
-              >
+              <a href="https://www.youtube.com/@srinandigram" target="_blank" rel="noopener noreferrer" className="p-3 bg-primary-foreground/10 rounded-lg hover:bg-secondary transition-colors">
                 <YouTubeIcon />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* ✅ Quick Links (2 columns on mobile, 1 on desktop) */}
           <div>
             <h4 className="font-heading font-semibold text-lg mb-4">Quick Links</h4>
-            <ul className="space-y-3">
+            <ul className="grid grid-cols-2 md:grid-cols-1 gap-y-3 gap-x-6">
               {quickLinks.map(link => (
                 <li key={link.name}>
                   <a href={link.href} className="text-primary-foreground/70 hover:text-secondary text-sm transition-colors">
@@ -131,6 +115,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+
         </div>
       </div>
 

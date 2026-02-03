@@ -47,59 +47,64 @@ const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container-custom section-padding !pb-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-          
+
+        {/* TOP GRID */}
+        <div className="grid gap-12 lg:grid-cols-4">
+
           {/* Brand */}
           <div>
-            <h3 className="font-para text-2xl tracking-wider font-bold mb-4">
-              Sri NandiGram
-            </h3>
+            <h3 className="font-para text-2xl font-bold mb-4">Sri NandiGram</h3>
             <p className="text-primary-foreground/70 text-sm mb-6">
               A premium gated community in Mayapur offering luxury villas,
               plots, and spiritual living in harmony with nature.
             </p>
             <div className="flex gap-4">
-              <a href="https://wa.me/919239633577" target="_blank" rel="noopener noreferrer" className="p-3 bg-primary-foreground/10 rounded-lg hover:bg-secondary transition-colors">
+              <a href="https://wa.me/919239633577" target="_blank" className="p-3 bg-primary-foreground/10 rounded-lg hover:bg-secondary">
                 <WhatsAppIcon />
               </a>
-              <a href="https://t.me/+eysRT04fXCAwNjRl" target="_blank" rel="noopener noreferrer" className="p-3 bg-primary-foreground/10 rounded-lg hover:bg-secondary transition-colors">
+              <a href="https://t.me/+eysRT04fXCAwNjRl" target="_blank" className="p-3 bg-primary-foreground/10 rounded-lg hover:bg-secondary">
                 <TelegramIcon />
               </a>
-              <a href="https://www.youtube.com/@srinandigram" target="_blank" rel="noopener noreferrer" className="p-3 bg-primary-foreground/10 rounded-lg hover:bg-secondary transition-colors">
+              <a href="https://www.youtube.com/@srinandigram" target="_blank" className="p-3 bg-primary-foreground/10 rounded-lg hover:bg-secondary">
                 <YouTubeIcon />
               </a>
             </div>
           </div>
 
-          {/* ✅ Quick Links (2 columns on mobile, 1 on desktop) */}
-          <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Quick Links</h4>
-            <ul className="grid grid-cols-2 md:grid-cols-1 gap-y-3 gap-x-6">
-              {quickLinks.map(link => (
-                <li key={link.name}>
-                  <a href={link.href} className="text-primary-foreground/70 hover:text-secondary text-sm transition-colors">
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          {/* ✅ QUICK LINKS + PROPERTIES (SIDE BY SIDE ON MOBILE) */}
+          <div className="grid grid-cols-2 gap-10 lg:col-span-2">
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="font-heading font-semibold text-lg mb-4">Quick Links</h4>
+              <ul className="grid grid-cols-2 gap-y-3 text-sm">
+                {quickLinks.map(link => (
+                  <li key={link.name}>
+                    <a href={link.href} className="text-primary-foreground/70 hover:text-secondary">
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Properties */}
+            <div>
+              <h4 className="font-heading font-semibold text-lg mb-4">Properties</h4>
+              <ul className="grid grid-cols-2 gap-y-3 text-sm">
+                {propertyLinks.map(link => (
+                  <li key={link.name}>
+                    <a href={link.href} className="text-primary-foreground/70 hover:text-secondary">
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
           </div>
 
-          {/* Properties */}
-          <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Properties</h4>
-            <ul className="space-y-3">
-              {propertyLinks.map(link => (
-                <li key={link.name}>
-                  <a href={link.href} className="text-primary-foreground/70 hover:text-secondary text-sm transition-colors">
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
+          {/* Contact Us (FULL WIDTH BELOW on mobile) */}
           <div>
             <h4 className="font-heading font-semibold text-lg mb-4">Contact Us</h4>
             <ul className="space-y-4 text-sm">

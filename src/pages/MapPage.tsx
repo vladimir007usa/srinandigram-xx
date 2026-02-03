@@ -126,7 +126,7 @@ const MapPage = () => {
                   Secure Your Sacred Space in <span className="text-[#d5b474]">Mayapur Dham</span>
                 </h3>
                 <p className="text-slate-600 text-lg leading-relaxed">
-                  Invest in high-appreciation land within a secure, gated environment. 
+                  Buy your space within a secure gated, eco friendly community. 
                   Our plots offer the perfect balance of spiritual serenity and modern 
                   infrastructure.
                 </p>

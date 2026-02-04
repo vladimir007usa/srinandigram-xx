@@ -11,6 +11,7 @@ import ApartmentsPage from "./pages/ApartmentsPage";
 import MapPage from "./pages/MapPage";
 import VideoSection from "./components/VideoSection";
 import GallerySection from "./pages/GallerySection";
+import ScrollToTop from "./components/ScrollToTop"; // Added Import
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
       <Sonner />
 
       <BrowserRouter>
+        <ScrollToTop /> {/* Added ScrollToTop here */}
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/gallery" element={<GallerySection />} />

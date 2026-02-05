@@ -108,9 +108,9 @@ const FeaturesSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="text-center mb-16"
         >
-          <h1 className="font-heading font-black text-[#d5b474] text-2xl md:text-3xl lg:text-4xl tracking-widest mb-4 uppercase">
-            WHAT MAKES US SPECIAL
-          </h1>
+          <h1 className="font-heading font-black text-[#d5b474] text-2xl md:text-3xl lg:text-4xl tracking-widest mb-4 uppercase px-6 md:px-0">
+  WHAT MAKES US SPECIAL
+</h1>
           <h2 className="font-heading font-semibold text-lg md:text-xl text-[#2a1d0d] mb-4">
   <span className="text-[#d5b474]">Life at</span> 
   <span className="font-para tracking-wider ml-2">Sri NandiGram</span>

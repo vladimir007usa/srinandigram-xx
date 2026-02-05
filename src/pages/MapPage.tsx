@@ -217,7 +217,17 @@ const MapPage = () => {
             </a>
           </div>
         </section>
+      </div>
 
+      {/* ✅ BACK TO PROPERTIES (NEW SECTION) */}
+      <div className="container-custom pb-24 text-center">
+        <Link
+          to="/#properties"
+          className="inline-flex items-center gap-2 text-[#4A3427] font-bold text-lg hover:text-secondary transition-colors"
+        >
+          <ArrowLeft className="w-5 h-5" />
+          Back to Properties
+        </Link>
       </div>
     </div>
   );

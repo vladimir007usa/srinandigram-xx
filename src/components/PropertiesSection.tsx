@@ -25,7 +25,7 @@ const properties = [
     path: '/properties/villas',
   },
   {
-    title: 'Luxury Apartments',
+    title: 'Premium Apartments',
     description:
       'These apartments suit families, professionals, and investors seeking long-term value.',
     image: villaImg, // ✅ Villa image moved here

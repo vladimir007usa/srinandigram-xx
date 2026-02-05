@@ -76,7 +76,7 @@ const ApartmentsPage = () => {
             <ArrowLeft className="w-4 h-4" /> Back to Properties
           </Link>
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
-            Luxury Apartments
+            Premium Apartments
           </h1>
           <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full">
             <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />

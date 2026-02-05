@@ -32,8 +32,8 @@ const properties = [
     icon: Building2,
     features: [
       '1-3 BHK Options',
-      'No Sharer Walls',
-      'Vastu - compliant design',
+      'No Shared Walls',
+      'Vastu Compliance design',
       'Premium finishes',
     ],
     cta: 'Explore Apartments',

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import logo from '@/assets/logo.png';
 
 const navLinks = [
@@ -17,8 +17,12 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const location = useLocation();
+  const navigate = useNavigate();
+  
   const isGalleryPage =
-    location.pathname === '/gallery' || location.pathname.includes('/villas');
+    location.pathname === '/gallery' || 
+    location.pathname.includes('/villas') || 
+    location.pathname.includes('/apartments');
 
   const [activeItem, setActiveItem] = useState('Home');
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
@@ -31,17 +35,36 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Updated Navigation Logic
   const handleNavClick = (e: React.MouseEvent, link: typeof navLinks[0]) => {
     setActiveItem(link.name);
     setIsMobileMenuOpen(false);
 
-    if (!isGalleryPage && link.href.includes('#')) {
-      e.preventDefault();
+    // Case 1: If it's the Home button or Logo
+    if (link.href === '/') {
+      if (location.pathname === '/') {
+        // If already on Home, just scroll to top
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return; // Allow default Link behavior if on sub-pages
+    }
+
+    // Case 2: For hash links (#properties, #about, etc.)
+    if (link.href.includes('#')) {
       const elementId = link.href.split('#')[1];
-      const element = document.getElementById(elementId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'auto' });
-        window.history.pushState(null, '', link.href);
+      
+      if (location.pathname === '/') {
+        // If we are on the home page, scroll smoothly to the section
+        e.preventDefault();
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          window.history.pushState(null, '', link.href);
+        }
+      } else {
+        // If we are on a sub-page, let the Link component navigate back to Home + ID
+        // The browser will naturally jump to the ID once the Home page loads
       }
     }
   };
@@ -59,20 +82,20 @@ const Navbar = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
-        ${isScrolled || isGalleryPage
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled || isGalleryPage
           ? 'bg-white/95 shadow-md backdrop-blur-md'
-          : 'bg-transparent'}
-        h-auto lg:h-[80px]
-      `}
+          : 'bg-transparent'
+      }`}
+      style={{ height: '80px' }}
     >
-      <nav className="container-custom grid grid-cols-[1fr_auto] lg:grid-cols-[260px_1fr_260px] items-center px-4 lg:px-0 py-2 lg:py-0">
+      <nav className="container-custom h-full grid grid-cols-[260px_1fr_260px] items-center">
 
         {/* LOGO */}
         <Link
           to="/"
           onClick={(e) => handleNavClick(e, navLinks[0])}
-          className="flex items-center z-50 lg:-ml-28"
+          className="flex items-center h-full z-50 -ml-28"
         >
           <img
             src={logo}
@@ -109,6 +132,7 @@ const Navbar = () => {
                   <motion.div
                     layoutId="top-nav-line"
                     className="absolute -top-6 left-0 right-0 h-[3px] bg-[#C19A6B]"
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
                 )}
               </Link>
@@ -130,14 +154,14 @@ const Navbar = () => {
         </div>
 
         {/* MOBILE MENU BUTTON */}
-        <div className="flex lg:hidden justify-end">
+        <div className="flex lg:hidden justify-end col-span-2">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`p-2 z-50 transition-colors ${
               isScrolled || isGalleryPage ? 'text-[#5C3A1E]' : 'text-white'
             }`}
           >
-            {isMobileMenuOpen ? <X /> : <Menu />}
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
@@ -148,15 +172,19 @@ const Navbar = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="absolute top-full left-0 right-0 lg:hidden px-4"
+              className="absolute top-[80px] left-0 right-0 lg:hidden px-4"
             >
-              <div className="flex flex-col gap-4 bg-white rounded-xl p-6 shadow-2xl">
+              <div className="flex flex-col gap-4 bg-white rounded-xl p-6 shadow-2xl border border-gray-100">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     to={link.href}
                     onClick={(e) => handleNavClick(e, link)}
-                    className="font-heading text-sm font-bold uppercase tracking-wide text-[#5C3A1E]"
+                    className={`font-heading text-sm font-bold uppercase tracking-wide ${
+                      activeItem === link.name
+                        ? 'text-[#C19A6B]'
+                        : 'text-[#5C3A1E]'
+                    }`}
                   >
                     {link.name}
                   </Link>

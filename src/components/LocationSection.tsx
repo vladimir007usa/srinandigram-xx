@@ -56,8 +56,8 @@ const LocationSection = () => {
             Location
           </span>
           <h2 className="font-heading font-semibold text-lg md:text-xl text-[#2a1d0d] mb-4">
-  <span className="text-[#d5b474]">Why</span> Mayapur?
-</h2>
+            <span className="text-[#d5b474]">Why</span> Mayapur?
+          </h2>
           <p className="section-subtitle mx-auto">
             Mayapur is one of the most spiritually significant places in India, attracting millions of devotees and seekers from around the world.
           </p>
@@ -102,7 +102,7 @@ const LocationSection = () => {
           >
             <div className="bg-card rounded-xl overflow-hidden shadow-elevated border border-border/50">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29227.89721082655!2d88.36986565!3d23.42116155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f91dbe780c3943%3A0x6e6e2cb3ea1a9c4c!2sMayapur%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1704200000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps?q=Sri+NandiGram+Mayapur+West+Bengal&output=embed"
                 width="100%"
                 height="350"
                 style={{ border: 0 }}

@@ -35,6 +35,16 @@ const Navbar = () => {
     setActiveItem(link.name);
     setIsMobileMenuOpen(false);
 
+    // FIX: If user clicks Home while on a sub-page, let the Link handle navigation.
+    // If they are ALREADY on the home page, scroll them to the top.
+    if (link.href === '/') {
+      if (location.pathname === '/') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+
     if (!isGalleryPage && link.href.includes('#')) {
       e.preventDefault();
       const elementId = link.href.split('#')[1];

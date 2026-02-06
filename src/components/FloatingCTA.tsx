@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X } from 'lucide-react'; // Changed Phone to MessageCircle
+import { MessageCircle, X } from 'lucide-react';
 
 const FloatingCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,33 +26,52 @@ const FloatingCTA = () => {
           <div className="relative">
             {/* Expanded Menu */}
             <AnimatePresence>
-            {isExpanded && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                className="absolute bottom-16 right-0 flex flex-col gap-3"
-              >
-                <a
-                  href="https://wa.me/919239633577" // Updated to WhatsApp link
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-3 bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-xl transition-shadow"
+              {isExpanded && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  className="absolute bottom-16 right-0 flex flex-col gap-3"
                 >
-                  <MessageCircle className="w-5 h-5 fill-current" />
-                  <span className="font-heading font-medium text-sm whitespace-nowrap">Message Us</span>
-                </a>
-              </motion.div>
-            )}
+                  <a
+                    href="https://wa.me/919239633577"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 px-4 py-3 bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-xl transition-shadow"
+                  >
+                    <MessageCircle className="w-5 h-5 fill-current" />
+                    <span className="font-heading font-medium text-sm whitespace-nowrap">
+                      Message Us
+                    </span>
+                  </a>
+                </motion.div>
+              )}
             </AnimatePresence>
 
             {/* Toggle Button */}
-            <button
+            <motion.button
               onClick={() => setIsExpanded(!isExpanded)}
+              animate={
+                !isExpanded
+                  ? {
+                      opacity: [1, 0.6, 1],
+                      scale: [1, 1.03, 1],
+                    }
+                  : { opacity: 1, scale: 1 }
+              }
+              transition={
+                !isExpanded
+                  ? {
+                      duration: 5, // ⏳ VERY slow blink
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }
+                  : { duration: 0.2 }
+              }
               className={`p-4 rounded-full shadow-elevated transition-all duration-300 ${
                 isExpanded
                   ? 'bg-muted text-foreground rotate-45'
-                  : 'bg-[#25D366] text-white animate-pulse hover:animate-none' 
+                  : 'bg-[#25D366] text-white'
               }`}
             >
               {isExpanded ? (
@@ -60,7 +79,7 @@ const FloatingCTA = () => {
               ) : (
                 <MessageCircle className="w-6 h-6 fill-current" />
               )}
-            </button>
+            </motion.button>
           </div>
         </motion.div>
       )}

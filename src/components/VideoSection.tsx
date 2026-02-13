@@ -1,17 +1,19 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const VideoSection = () => {
-  // Updated the second video with your new link: 9htb31OrIUY
+  const { t } = useTranslation();
+
   const videos = [
     {
       id: "xyQpzjvWgVY",
-      title: "Sri NandiGram Journey",
+      title: t('videos.video1_title'),
       params: "si=6yjut-ZNP9hgi8_D"
     },
     {
-      id: "9htb31OrIUY", // New Video ID
-      title: "Sri NandiGram Experience", // You can update this title as you like
-      params: "si=6RpRiOs9bguKivlR" // New Params
+      id: "9htb31OrIUY",
+      title: t('videos.video2_title'),
+      params: "si=6RpRiOs9bguKivlR"
     }
   ];
 
@@ -26,9 +28,8 @@ const VideoSection = () => {
           className="max-w-6xl mx-auto"
         >
           <div className="text-center mb-12">
-            {/* Added your color-swap theme here too for consistency! */}
             <h2 className="text-4xl md:text-5xl font-bold text-[#4A3728] mb-4">
-              <span className="text-[#C5A059]">Explore</span> Our Vision
+              <span className="text-[#C5A059]">{t('videos.title_start')}</span> {t('videos.title_end')}
             </h2>
             <div className="w-24 h-1 bg-[#C5A059] mx-auto"></div>
           </div>

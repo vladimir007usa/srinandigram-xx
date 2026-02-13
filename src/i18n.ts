@@ -132,6 +132,12 @@ const resources = {
           archery_d: "Master the ancient art of focus and precision in our dedicated archery range."
         }
       },
+      videos: {
+        title_start: "Explore",
+        title_end: "Our Vision",
+        video1_title: "Sri NandiGram Journey",
+        video2_title: "Sri NandiGram Experience"
+      },
       change_language: "Language",
     },
   },
@@ -256,6 +262,12 @@ const resources = {
           archery_t: "Академия стрельбы из лука Арджуны",
           archery_d: "Освойте древнее искусство концентрации на нашей площадке для стрельбы."
         }
+      },
+      videos: {
+        title_start: "Узнайте о",
+        title_end: "Нашем Видении",
+        video1_title: "Путешествие в Шри НандиГрам",
+        video2_title: "Опыт в Шри НандиГрам"
       },
       change_language: "Сменить язык",
     },

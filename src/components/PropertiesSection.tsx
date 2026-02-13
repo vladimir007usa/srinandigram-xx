@@ -3,44 +3,62 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Building2, Home, Map, MessageCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 import plotsImg from '@/assets/plots.jpg'; 
 import villaImg from '@/assets/villa.jpg'; 
 import plotsAllocation from '@/assets/plots allocation.jpg';
 
-const properties = [
-  {
-    title: 'Premium Villa',
-    description: 'A villa in a secured gated community, built for comfort, care, and close family moments.',
-    image: plotsImg,
-    icon: Home,
-    features: ['Vastu-compliant layouts', 'Road connectivity', 'High Glass Coverage', 'Gated Community'],
-    cta: 'Explore Villas',
-    path: '/properties/villas',
-  },
-  {
-    title: 'Premium Apartments',
-    description: 'These apartments suit families, professionals, and investors seeking long-term value.',
-    image: villaImg,
-    icon: Building2,
-    features: ['1-3 BHK Options', 'No Shared Walls', 'Vastu Compliance design', 'Premium finishes'],
-    cta: 'Explore Apartments',
-    path: '/properties/apartments',
-  },
-  {
-    title: 'Plots Allocation',
-    description: 'Not just land — the beginning of everything you imagine. A place where your future takes shape.',
-    image: plotsAllocation,
-    icon: Map,
-    features: ['Custom Size', 'Road Connectivity', 'Free Planing', 'Inside Community Sector'],
-    cta: 'View Map',
-    path: '/properties/map',
-  },
-];
-
 const PropertiesSection = () => {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  // Map translations to the property objects
+  const properties = [
+    {
+      title: t('offerings.villas.title'),
+      description: t('offerings.villas.description'),
+      image: plotsImg,
+      icon: Home,
+      features: [
+        t('offerings.villas.f1'),
+        t('offerings.villas.f2'),
+        t('offerings.villas.f3'),
+        t('offerings.villas.f4'),
+      ],
+      cta: t('offerings.villas.cta'),
+      path: '/properties/villas',
+    },
+    {
+      title: t('offerings.apartments.title'),
+      description: t('offerings.apartments.description'),
+      image: villaImg,
+      icon: Building2,
+      features: [
+        t('offerings.apartments.f1'),
+        t('offerings.apartments.f2'),
+        t('offerings.apartments.f3'),
+        t('offerings.apartments.f4'),
+      ],
+      cta: t('offerings.apartments.cta'),
+      path: '/properties/apartments',
+    },
+    {
+      title: t('offerings.plots.title'),
+      description: t('offerings.plots.description'),
+      image: plotsAllocation,
+      icon: Map,
+      features: [
+        t('offerings.plots.f1'),
+        t('offerings.plots.f2'),
+        t('offerings.plots.f3'),
+        t('offerings.plots.f4'),
+      ],
+      cta: t('offerings.plots.cta'),
+      path: '/properties/map',
+    },
+  ];
 
   const whatsappUrl = `https://wa.me/919239633577?text=${encodeURIComponent(
     'Hello! I am interested in Sri NandiGram properties.'
@@ -55,24 +73,23 @@ const PropertiesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="font-heading font-bold text-[#d5b474] text-2xl md:text-3xl lg:text-4xl tracking-widest mb-2 uppercase">
-            Our Offerings
+          <span className="font-heading font-bold text-[#d5b474] text-2xl md:text-3xl lg:text-4xl tracking-widest mb-2 uppercase block">
+            {t('offerings.badge')}
           </span>
           <h2 className="font-heading font-semibold text-lg md:text-xl">
-            <span className="text-[#d5b474]">Find Your</span> Perfect Property
+            <span className="text-[#d5b474]">{t('offerings.title_start')}</span> {t('offerings.title_end')}
           </h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {properties.map((property, index) => (
             <motion.div
-              key={property.title}
+              key={index}
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
               className="card-elevated group flex flex-col h-full"
             >
-              {/* Image is now wrapped in a Link for navigation */}
               <Link to={property.path} className="relative h-64 overflow-hidden block cursor-pointer">
                 <img
                   src={property.image}
@@ -120,7 +137,7 @@ const PropertiesSection = () => {
 
         <motion.div className="mt-16 p-8 md:p-12 bg-primary rounded-2xl text-center">
           <h3 className="font-heading text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
-            Ready to Own Your Dream Property?
+            {t('offerings.footer.title')}
           </h3>
           <div className="flex justify-center">
             <a
@@ -130,7 +147,7 @@ const PropertiesSection = () => {
               className="btn-secondary px-10 flex items-center gap-2"
             >
               <MessageCircle className="w-5 h-5" />
-              Send a message
+              {t('offerings.footer.cta')}
             </a>
           </div>
         </motion.div>

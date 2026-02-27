@@ -17,7 +17,7 @@ const VideoSection = () => {
     },
     {
       id: "EVjJb2zg3JM",
-      title: "Sri NandiGram Overview", // You can add this key to your i18n file later
+      title: "Sri NandiGram Festival", // You can add this key to your i18n file later
       params: "si=TCuy3C30xmtiJdmg"
     }
   ];

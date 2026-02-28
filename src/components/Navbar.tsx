@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import logo from '@/assets/logo.png';
 
 const navLinks = [
-  { name: 'Home', href: '/', id: 'home' },
+  { name: 'Home', href: '/', id: 'home' }, // href remains '/' to avoid #home
   { name: 'Properties', href: '/#properties', id: 'properties' },
   { name: 'Our Story', href: '/#about', id: 'about' },
   { name: 'Location', href: '/#location', id: 'location' },
@@ -35,6 +35,8 @@ const Navbar = () => {
     if (link.href === '/') {
       if (location.pathname === '/') {
         e.preventDefault();
+        // This line resets the URL to base path without any hash
+        window.history.pushState(null, '', '/'); 
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
       return;

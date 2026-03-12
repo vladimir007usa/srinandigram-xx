@@ -17,14 +17,8 @@ const VideoSection = () => {
     },
     {
       id: "EVjJb2zg3JM",
-      title: "Sri NandiGram Overview",
+      title: "Sri NandiGram Festival", // You can add this key to your i18n file later
       params: "si=TCuy3C30xmtiJdmg"
-    },
-    // This is the new video for the second row
-    {
-      id: "STP9sCP5Mhw",
-      title: "Property Walkthrough", // You can update this title
-      params: "si=v6izc9wgXIoGO-RY"
     }
   ];
 
@@ -45,14 +39,10 @@ const VideoSection = () => {
             <div className="w-24 h-1 bg-[#C5A059] mx-auto"></div>
           </div>
 
-          {/* Grid maintains 3 columns on large screens. The 4th video will start a new row. */}
+          {/* Updated grid to support 3 columns on large screens */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {videos.map((video, index) => (
-              <div 
-                key={video.id} 
-                className={`group ${index === 3 ? 'lg:col-start-2' : ''}`}
-              >
-                {/* Note: lg:col-start-2 on the 4th item forces it to the middle of the second row on desktop */}
+            {videos.map((video) => (
+              <div key={video.id} className="group">
                 <div className="relative pb-[56.25%] h-0 rounded-3xl overflow-hidden shadow-lg border-[6px] border-white transition-transform duration-300 group-hover:scale-[1.02]">
                   <iframe
                     className="absolute top-0 left-0 w-full h-full"

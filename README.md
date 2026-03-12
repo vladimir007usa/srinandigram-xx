@@ -3,7 +3,7 @@
 A modern, high-performance real estate platform showcasing luxury villas and apartments in Mayapur. Designed for a seamless user experience with interactive maps, video tours, and a responsive gallery.
 
 ## 🔗 Live Links
-* **Official Website:** [https://srinandigram.site](https://srinandigram.site)
+* **Official Website:** [https://srinandigram.in](https://srinandigram.in)
 * **Preview Link:** [https://srinandigram-xx.vercel.app](https://srinandigram-xx.vercel.app)
 
 ---

@@ -51,7 +51,8 @@ const FeaturesSection = () => {
   const devotionalLife = [
     { icon: Building, title: t('features.items.temple_t'), description: t('features.items.temple_d'), image: temple },
     { icon: Flame, title: t('features.items.yajna_t'), description: t('features.items.yajna_d'), image: yajnaSala },
-    { icon: HandHeart, title: t('features.items.gau_t'), description: t('features.items.gau_d'), image: gauSanctuary },
+    // Added the external link here
+    { icon: HandHeart, title: t('features.items.gau_t'), description: t('features.items.gau_d'), image: gauSanctuary, link: 'https://www.nandisanctuary.com/' },
   ];
 
   const education = [
@@ -66,34 +67,45 @@ const FeaturesSection = () => {
     { icon: Target, title: t('features.items.archery_t'), description: t('features.items.archery_d'), image: archery },
   ];
 
-  const renderCard = (feature: any, index: number) => (
-    <motion.div
-      key={feature.title}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.05 }}
-      className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group"
-    >
-      <div className="h-48 overflow-hidden">
-        <img
-          src={feature.image}
-          alt={feature.title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-        />
-      </div>
-      <div className="p-6">
-        <div className="flex items-start gap-4">
-          <div className="p-3 bg-[#d5b474]/10 rounded-xl">
-            <feature.icon className="w-6 h-6 text-[#d5b474]" />
-          </div>
-          <div>
-            <h3 className="font-heading font-bold text-[#5C3A1E] mb-2">{feature.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+  const renderCard = (feature: any, index: number) => {
+    const CardContent = (
+      <motion.div
+        key={feature.title}
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5, delay: index * 0.05 }}
+        className={`bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group h-full ${feature.link ? 'cursor-pointer' : ''}`}
+      >
+        <div className="h-48 overflow-hidden">
+          <img
+            src={feature.image}
+            alt={feature.title}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          />
+        </div>
+        <div className="p-6">
+          <div className="flex items-start gap-4">
+            <div className="p-3 bg-[#d5b474]/10 rounded-xl">
+              <feature.icon className="w-6 h-6 text-[#d5b474]" />
+            </div>
+            <div>
+              <h3 className="font-heading font-bold text-[#5C3A1E] mb-2">{feature.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+            </div>
           </div>
         </div>
-      </div>
-    </motion.div>
-  );
+      </motion.div>
+    );
+
+    // If a link exists, wrap the entire card in an anchor tag
+    return feature.link ? (
+      <a href={feature.link} target="_blank" rel="noopener noreferrer" className="block">
+        {CardContent}
+      </a>
+    ) : (
+      CardContent
+    );
+  };
 
   const SectionTitle = ({ children }: { children: React.ReactNode }) => (
     <div className="text-xl font-heading font-bold text-[#5C3A1E] mt-12 mb-6 border-l-4 border-[#d5b474] pl-4 uppercase tracking-wider">

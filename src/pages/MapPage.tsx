@@ -4,13 +4,13 @@ import { ArrowLeft, CheckCircle2, MapPin, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // ASSETS
-import img1 from '@/assets/41446787.jpg';
-import img2 from '@/assets/41446814.jpg';
-import img3 from '@/assets/41446817.jpg';
-import img4 from '@/assets/41446844.jpg';
-import img5 from '@/assets/41446865.jpg';
-import imgLand1 from '@/assets/68663755.jpg'; 
-import imgLand2 from '@/assets/68663898.jpg';
+import img1 from '@/assets/41446787.webp';
+import img2 from '@/assets/41446814.webp';
+import img3 from '@/assets/41446817.webp';
+import img4 from '@/assets/41446844.webp';
+import img5 from '@/assets/41446865.webp';
+import imgLand1 from '@/assets/68663755.webp'; 
+import imgLand2 from '@/assets/68663898.webp';
 
 const MapPage = () => {
   const heroImages = [img1, img2, img3, img4, img5];
@@ -106,7 +106,7 @@ const MapPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center bg-slate-50 rounded-[3rem] p-8 md:p-12 border border-slate-100 shadow-xl">
             
             <motion.div initial={{ opacity: 0, scale: 0.95, x: -30 }} whileInView={{ opacity: 1, scale: 1, x: 0 }} viewport={{ once: true }} className="relative group overflow-hidden rounded-[2.5rem] shadow-lg h-full min-h-[400px]">
-              <img src={imgLand1} alt="Plot visualization 1" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <img loading="lazy" src={imgLand1} alt="Plot visualization 1" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
               <div className="absolute bottom-8 left-8 text-white">
                 <p className="text-sm font-black uppercase tracking-[0.3em] text-secondary mb-2">Visualization A</p>
@@ -185,7 +185,7 @@ const MapPage = () => {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, scale: 0.95, x: 30 }} whileInView={{ opacity: 1, scale: 1, x: 0 }} viewport={{ once: true }} className="relative group overflow-hidden rounded-[2.5rem] shadow-lg h-full min-h-[400px] order-1 lg:order-2">
-              <img src={imgLand2} alt="Plot visualization 2" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <img loading="lazy" src={imgLand2} alt="Plot visualization 2" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
               <div className="absolute bottom-8 right-8 text-right text-white">
                 <p className="text-sm font-black uppercase tracking-[0.3em] text-amber-400 mb-2">Visualization B</p>

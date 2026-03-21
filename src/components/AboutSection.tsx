@@ -3,9 +3,9 @@ import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Shield, Leaf, Heart, Users, ChevronDown, ChevronUp } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import templeImg from '@/assets/temple.jpg';
-import villaImg from '@/assets/villa.jpg';
-import gardenImg from '@/assets/organic-garden.jpg';
+import templeImg from '@/assets/temple.webp';
+import villaImg from '@/assets/villa.webp';
+import gardenImg from '@/assets/organic-garden.webp';
 
 const AboutSection = () => {
   const { t } = useTranslation();
@@ -91,19 +91,19 @@ const AboutSection = () => {
                 <div className="relative">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-4">
-                      <img
+                      <img loading="lazy"
                         src={templeImg}
                         alt="Temple"
                         className="w-full h-48 object-cover rounded-xl shadow-soft"
                       />
-                      <img
+                      <img loading="lazy"
                         src={gardenImg}
                         alt="Garden"
                         className="w-full h-64 object-cover rounded-xl shadow-soft"
                       />
                     </div>
                     <div className="pt-8">
-                      <img
+                      <img loading="lazy"
                         src={villaImg}
                         alt="Villa"
                         className="w-full h-80 object-cover rounded-xl shadow-elevated"

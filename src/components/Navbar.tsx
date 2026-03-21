@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Globe } from 'lucide-react'; // Re-added Globe
 import { useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import logo from '@/assets/logo.png';
+import logo from '@/assets/logo.webp';
 
 const navLinks = [
   { name: 'Home', href: '/', id: 'home' }, // href remains '/' to avoid #home
@@ -76,7 +76,7 @@ const Navbar = () => {
         
         {/* LOGO - No changes to scale or positioning */}
         <Link to="/" onClick={(e) => handleNavClick(e, navLinks[0])} className="flex items-center z-50 lg:-ml-28">
-          <img src={logo} alt="Logo" className="h-28 md:h-36 object-contain transition-transform duration-500"
+          <img loading="lazy" src={logo} alt="Logo" className="h-28 md:h-36 object-contain transition-transform duration-500"
             style={{
               filter: isScrolled || isGalleryPage ? 'none' : 'brightness(1.2)',
               transform: isScrolled || isGalleryPage ? 'scale(1.6)' : 'scale(2.3)',

@@ -8,24 +8,24 @@ import {
   Droplets, Sun, Target, ShoppingBag, Waves, ChevronDown, ChevronUp 
 } from 'lucide-react';
 
-import organicGarden from '@/assets/organic-garden.jpg';
-import beekeeping from '@/assets/beekeeping.jpg';
-import gauSanctuary from '@/assets/gau-sanctuary.jpg';
-import temple from '@/assets/temple.jpg';
-import playground from '@/assets/children-playground.jpg';
-import mangoGrove from '@/assets/mango-grove.jpg';
-import yogaArea from '@/assets/yoga-area.jpg';
-import varnashramCollege from '@/assets/varnashram-college.jpg';
-import vaishnavInstitute from '@/assets/vaishnav-institute.jpg';
-import gitaPathshala from '@/assets/gita-pathshala.jpg';
-import yajnaSala from '@/assets/yajna-sala.jpg';
-import guestHouse from '@/assets/guest-house.jpg';
-import securityGate from '@/assets/security-gate.jpg';
-import internetFacility from '@/assets/internet-facility.jpg';
-import waterTreatment from '@/assets/water-treatment.jpg';
-import archery from '@/assets/archery.jpg';
-import grocery from '@/assets/grocery.jpg';
-import stp from '@/assets/stp.jpg';
+import organicGarden from '@/assets/organic-garden.webp';
+import beekeeping from '@/assets/beekeeping.webp';
+import gauSanctuary from '@/assets/gau-sanctuary.webp';
+import temple from '@/assets/temple.webp';
+import playground from '@/assets/children-playground.webp';
+import mangoGrove from '@/assets/mango-grove.webp';
+import yogaArea from '@/assets/yoga-area.webp';
+import varnashramCollege from '@/assets/varnashram-college.webp';
+import vaishnavInstitute from '@/assets/vaishnav-institute.webp';
+import gitaPathshala from '@/assets/gita-pathshala.webp';
+import yajnaSala from '@/assets/yajna-sala.webp';
+import guestHouse from '@/assets/guest-house.webp';
+import securityGate from '@/assets/security-gate.webp';
+import internetFacility from '@/assets/internet-facility.webp';
+import waterTreatment from '@/assets/water-treatment.webp';
+import archery from '@/assets/archery.webp';
+import grocery from '@/assets/grocery.webp';
+import stp from '@/assets/stp.webp';
 
 const FeaturesSection = () => {
   const { t } = useTranslation();
@@ -77,7 +77,7 @@ const FeaturesSection = () => {
         className={`bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group h-full ${feature.link ? 'cursor-pointer' : ''}`}
       >
         <div className="h-48 overflow-hidden">
-          <img
+          <img loading="lazy"
             src={feature.image}
             alt={feature.title}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"

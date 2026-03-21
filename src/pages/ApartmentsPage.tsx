@@ -8,11 +8,11 @@ import {
 import { Link } from 'react-router-dom';
 
 // ASSETS
-import apartmentHero from '@/assets/villa.jpg';
-import lk1bhk from '@/assets/LK 1 BHK.png';
-import lk2bhk from '@/assets/LK 2 bhk.png';
-import lk1bhkPlan from '@/assets/Lalita Kunj A 07.03 FT2_.png';
-import lk2bhkPlan from '@/assets/Lalita Kunj B 07.03 FT2.png';
+import apartmentHero from '@/assets/villa.webp';
+import lk1bhk from '@/assets/LK 1 BHK.webp';
+import lk2bhk from '@/assets/LK 2 bhk.webp';
+import lk1bhkPlan from '@/assets/Lalita Kunj A 07.03 FT2_.webp';
+import lk2bhkPlan from '@/assets/Lalita Kunj B 07.03 FT2.webp';
 
 const ApartmentsPage = () => {
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
@@ -67,7 +67,7 @@ const ApartmentsPage = () => {
 
       {/* HERO */}
       <div className="relative w-full h-[400px] md:h-[520px] overflow-hidden">
-        <img src={apartmentHero} className="w-full h-full object-cover" alt="Hero" />
+        <img loading="lazy" src={apartmentHero} className="w-full h-full object-cover" alt="Hero" />
         <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-6">
           <Link
             to="/#properties"
@@ -120,7 +120,7 @@ const ApartmentsPage = () => {
                       {idx === 0 ? '3D Plan' : '2D Plan'}
                     </div>
 
-                    <img
+                    <img loading="lazy"
                       src={img}
                       className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                       alt={`${option.title} view`}

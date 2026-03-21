@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Building2, Home, Map, MessageCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-import plotsImg from '@/assets/plots.jpg'; 
-import villaImg from '@/assets/villa.jpg'; 
-import plotsAllocation from '@/assets/plots allocation.jpg';
+import plotsImg from '@/assets/plots.webp'; 
+import villaImg from '@/assets/villa.webp'; 
+import plotsAllocation from '@/assets/plots allocation.webp';
 
 const PropertiesSection = () => {
   const { t } = useTranslation();
@@ -91,7 +91,7 @@ const PropertiesSection = () => {
               className="card-elevated group flex flex-col h-full"
             >
               <Link to={property.path} className="relative h-64 overflow-hidden block cursor-pointer">
-                <img
+                <img loading="lazy"
                   src={property.image}
                   alt={property.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"

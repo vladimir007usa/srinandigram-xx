@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import heroBanner from '@/assets/hero-banner.jpg';
+import heroBanner from '@/assets/hero-banner.webp';
 
 const HeroSection = () => {
   const { t, i18n } = useTranslation();
@@ -16,7 +16,7 @@ const HeroSection = () => {
     >
       {/* Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <img
+        <img fetchPriority="high" loading="eager"
           src={heroBanner}
           alt="Sri NandiGram luxury villa community in Mayapur"
           className="w-full h-full object-cover"

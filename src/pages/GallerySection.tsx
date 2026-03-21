@@ -8,17 +8,17 @@ import Footer from '@/components/Footer';
 // LocationSection import removed from here
 
 // Assets
-import heroBanner from '@/assets/hero-banner.jpg';
-import organicGarden from '@/assets/organic-garden.jpg';
-import gauSanctuary from '@/assets/gau-sanctuary.jpg';
-import temple from '@/assets/temple.jpg';
-import villa from '@/assets/villa.jpg';
-import mangoGrove from '@/assets/mango-grove.jpg';
-import playground from '@/assets/children-playground.jpg';
-import yogaArea from '@/assets/yoga-area.jpg';
-import plots from '@/assets/plots.jpg';
-import beekeeping from '@/assets/beekeeping.jpg';
-import plotsAllocation from '@/assets/plots allocation.jpg';
+import heroBanner from '@/assets/hero-banner.webp';
+import organicGarden from '@/assets/organic-garden.webp';
+import gauSanctuary from '@/assets/gau-sanctuary.webp';
+import temple from '@/assets/temple.webp';
+import villa from '@/assets/villa.webp';
+import mangoGrove from '@/assets/mango-grove.webp';
+import playground from '@/assets/children-playground.webp';
+import yogaArea from '@/assets/yoga-area.webp';
+import plots from '@/assets/plots.webp';
+import beekeeping from '@/assets/beekeeping.webp';
+import plotsAllocation from '@/assets/plots allocation.webp';
 
 const galleryImages = [
   { src: plotsAllocation, alt: 'Master Plot Allocation Map', category: 'Layout' },
@@ -97,7 +97,7 @@ const GallerySection = () => {
                   }`}
                   onClick={() => setSelectedImage(image.src)}
                 >
-                  <img
+                  <img loading="lazy"
                     src={image.src}
                     alt={image.alt}
                     className={`w-full object-cover group-hover:scale-110 transition-transform duration-700 ${

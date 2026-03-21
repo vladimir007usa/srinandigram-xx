@@ -9,24 +9,24 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import villaImg from '@/assets/plots.jpg';
-import villaGround3D from '@/assets/68460886.png';
-import homeGround3D from '@/assets/68468948.png';
-import villaFirst3D from '@/assets/68460889.png';
-import homeFirst3D from '@/assets/68469187.png';
+import villaImg from '@/assets/plots.webp';
+import villaGround3D from '@/assets/68460886.webp';
+import homeGround3D from '@/assets/68468948.webp';
+import villaFirst3D from '@/assets/68460889.webp';
+import homeFirst3D from '@/assets/68469187.webp';
 
 // ✅ TYPE 1 EXTERIOR IMAGES
-import villaExterior1 from '@/assets/68468916.jpg';
-import villaExterior2 from '@/assets/2025.jpg';
+import villaExterior1 from '@/assets/68468916.webp';
+import villaExterior2 from '@/assets/2025.webp';
 
 // ✅ TYPE 2 SECOND EXTERIOR IMAGE
-import homeExterior2 from '@/assets/68451620.jpg';
+import homeExterior2 from '@/assets/68451620.webp';
 
 // ✅ 2D IMAGES
-import villaGround2D from '@/assets/new 1.png';
-import homeGround2D from '@/assets/new 3.png';
-import villaFirst2D from '@/assets/new 2.png';
-import homeFirst2D from '@/assets/new 4.png';
+import villaGround2D from '@/assets/new 1.webp';
+import homeGround2D from '@/assets/new 3.webp';
+import villaFirst2D from '@/assets/new 2.webp';
+import homeFirst2D from '@/assets/new 4.webp';
 
 const VillasPage = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -59,7 +59,7 @@ const VillasPage = () => {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <div className="relative h-[60vh]">
-        <img src={villaImg} className="w-full h-full object-cover" alt="Luxury Villa" />
+        <img loading="lazy" src={villaImg} className="w-full h-full object-cover" alt="Luxury Villa" />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <div className="container-custom text-center">
             <Link to="/#properties" className="inline-flex items-center text-white mb-6">
@@ -122,7 +122,7 @@ const VillasPage = () => {
                           className="aspect-square rounded-xl overflow-hidden cursor-pointer bg-white border border-gray-200 shadow-md hover:shadow-xl transition-shadow"
                           onClick={() => setSelectedImage(img.src)}
                         >
-                          <img
+                          <img loading="lazy"
                             src={img.src}
                             alt={img.alt}
                             className="w-full h-full object-contain p-3"

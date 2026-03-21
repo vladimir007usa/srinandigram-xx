@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+/* External fonts moved to index.html preconnects to prevent render blocking */
 
 /* Para Font Registration */
 @font-face {

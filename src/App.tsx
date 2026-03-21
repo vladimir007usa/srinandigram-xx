@@ -1,3 +1,4 @@
+import { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,7 +11,7 @@ import VillasPage from "./pages/VillasPage";
 import ApartmentsPage from "./pages/ApartmentsPage";
 import MapPage from "./pages/MapPage";
 import VideoSection from "./components/VideoSection";
-import GallerySection from "./pages/GallerySection";
+const GallerySection = lazy(() => import("./pages/GallerySection"));
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -25,7 +26,11 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/gallery" element={<GallerySection />} />
+          <Route path="/gallery" element={
+            <Suspense fallback={<div className="flex h-screen items-center justify-center text-brown-dark font-heading">Loading...</div>}>
+              <GallerySection />
+            </Suspense>
+          } />
           <Route path="/properties/villas" element={<VillasPage />} />
           <Route path="/properties/apartments" element={<ApartmentsPage />} />
           <Route path="/properties/map" element={<MapPage />} />

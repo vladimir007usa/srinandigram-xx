@@ -51,28 +51,28 @@ const FloatingCTA = () => {
             {/* Toggle Button */}
             <motion.button
               onClick={() => setIsExpanded(!isExpanded)}
+              aria-label={isExpanded ? "Close chat menu" : "Open chat menu"}
               animate={
                 !isExpanded
                   ? {
-                      opacity: [1, 0.6, 1],
-                      scale: [1, 1.03, 1],
-                    }
+                    opacity: [1, 0.6, 1],
+                    scale: [1, 1.03, 1],
+                  }
                   : { opacity: 1, scale: 1 }
               }
               transition={
                 !isExpanded
                   ? {
-                      duration: 5, // ⏳ VERY slow blink
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    }
+                    duration: 5, // ⏳ VERY slow blink
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }
                   : { duration: 0.2 }
               }
-              className={`p-4 rounded-full shadow-elevated transition-all duration-300 ${
-                isExpanded
+              className={`p-4 rounded-full shadow-elevated transition-all duration-300 ${isExpanded
                   ? 'bg-muted text-foreground rotate-45'
                   : 'bg-[#25D366] text-white'
-              }`}
+                }`}
             >
               {isExpanded ? (
                 <X className="w-6 h-6" />

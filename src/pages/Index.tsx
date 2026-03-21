@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import FeaturesSection from '@/components/FeaturesSection';
-import PropertiesSection from '@/components/PropertiesSection';
+const PropertiesSection = lazy(() => import('@/components/PropertiesSection'));
 import LocationSection from '@/components/LocationSection';
 import VideoSection from '@/components/VideoSection';
 import ContactSection from '@/components/ContactSection';
@@ -35,7 +35,9 @@ const Index = () => {
       </section>
 
       <section id="properties">
-        <PropertiesSection />
+        <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center text-brown-dark font-heading text-xl">Loading Properties...</div>}>
+          <PropertiesSection />
+        </Suspense>
       </section>
 
       <section id="about">

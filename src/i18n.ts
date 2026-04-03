@@ -205,6 +205,123 @@ const resources = {
       calendar: {
         title: "Festivals Calendar - Sri NandiGram"
       },
+      location: {
+        badge: "Location",
+        title_start: "Why",
+        title_end: "Mayapur?",
+        subtitle: "Mayapur is one of the most spiritually significant places in India, attracting millions of devotees and seekers from around the world.",
+        visit_us: "Visit Us",
+        directions: "Get Directions",
+        benefits: {
+          spiritual_t: "Spiritual Capital",
+          spiritual_d: "Mayapur is the spiritual headquarters of ISKCON and a major pilgrimage destination.",
+          natural_t: "Natural Beauty",
+          natural_d: "Surrounded by lush greenery, rivers, and pristine natural landscapes.",
+          growing_t: "Growing Infrastructure",
+          growing_d: "Rapid development with schools, hospitals, and commercial facilities nearby.",
+          connected_t: "Well Connected",
+          connected_d: "2.5 hours from Kolkata, accessible by road and rail.",
+          access_t: "Easy Access",
+          access_d: "Nearest airport: Netaji Subhas Chandra Bose International Airport.",
+          prime_t: "Prime Location",
+          prime_d: "Strategic location with excellent appreciation potential."
+        }
+      },
+      villas_page: {
+        back: "Back to Properties",
+        title: "Private Luxury Villas",
+        subtitle_t: "Spiritual Living, Modern Comfort",
+        subtitle_d: "Our villas in Sri NandiGram are designed with the principles of Vastu Shastra, ensuring your home is a sanctuary of positive energy.",
+        video_title: "Experience The Villas",
+        enquiry_title: "Inquire About Your Future Villas",
+        enquiry_subtitle: "Book a private tour of our model homes and villas today.",
+        enquiry_cta: "Contact Sales Team",
+        types: {
+          v1: "Villa Type 1",
+          v2: "Villa Type 2"
+        },
+        labels: {
+          exterior: "Exterior View",
+          ground: "Ground Floor",
+          first: "1st Floor",
+          p3d: "3D Plan",
+          p2d: "2D Plan"
+        },
+        features: {
+          p1: "Premium Finish",
+          p2: "Spacious Design"
+        }
+      },
+      apartments_page: {
+        title: "Premium Apartments",
+        back: "Back to Properties",
+        enquiry_title: "Inquire About Your Future Home",
+        enquiry_subtitle: "Book a private tour of our model homes and villas today.",
+        enquiry_cta: "Contact Sales Team",
+        plans: {
+          p3d: "3D Plan",
+          p2d: "2D Plan"
+        },
+        options: {
+          bhk1: {
+            title: "1 BHK Apartment",
+            size: "Total built up area 710 Sq. Ft.",
+            desc: "Ideal for spiritual seekers or young professionals. Designed with a separate bedroom for privacy and a spacious hall for relaxation.",
+            f1: "Spiritual Seeker’s Layout",
+            f2: "Large Balcony",
+            f3: "Premium Glass Finish",
+            f4: "Vastu Compliant"
+          },
+          bhk2: {
+            title: "2 BHK Apartment",
+            size: "Total built up area 1170 Sq. Ft.",
+            desc: "Perfect for growing families. Our unique 'No Shared Walls' design ensures maximum acoustic privacy and natural cross-ventilation.",
+            f1: "2 Balconies",
+            f2: "Guest/Study Room",
+            f3: "Spacious Kitchen",
+            f4: "Corner Unit View"
+          }
+        }
+      },
+      map_page: {
+        back: "Back to Properties",
+        hero_title: "Buy Land in Mayapur",
+        hero_subtitle: "Gated Community",
+        header_title: "Premium Plot Selection",
+        header_subtitle: "Explore our available gated community plots in the heart of Mayapur Dham.",
+        enquiry_title: "Inquire About Your Future Plots",
+        enquiry_subtitle: "Ready to secure your land? Connect with us for pricing and site visit details.",
+        enquiry_cta: "Contact Sales Team",
+        sections: {
+          s1: {
+            badge: "Limited Plots Available",
+            title: "Secure Your Sacred Space in Mayapur Dham",
+            desc: "Buy your space within a secure gated, eco friendly community. Our plots offer the perfect balance of spiritual serenity and modern infrastructure.",
+            vis: "Visualization A",
+            label: "Planned Green Enclave",
+            at: "at Sri NandiGram",
+            f1: "Clear Title Deeds",
+            f2: "24/7 Gated Security",
+            f3: "Internal Paved Roads",
+            f4: "Water & Electricity",
+            f5: "Drainage System",
+            f6: "Green Surroundings",
+            cta: "Enquire Now"
+          },
+          s2: {
+            badge: "Modern Lifestyle",
+            title: "Architectural Excellence",
+            desc: "Every plot is strategically placed to ensure maximum ventilation and Vastu compliance. Build your dream villa in a community designed for devotees and peace-seekers alike.",
+            vis: "Visualization B",
+            label: "Luxury Villa Concepts",
+            at: "at Sri NandiGram",
+            f1_t: "Temple Proximity",
+            f1_d: "Located just 5 minutes from the main temple gates, ensuring you never miss a morning mangala-arati.",
+            f2_t: "Community Living",
+            f2_d: "Join a neighborhood of like-minded individuals in a safe, peaceful, and spiritually vibrant atmosphere."
+          }
+        }
+      },
       change_language: "Language",
     },
   },
@@ -402,6 +519,123 @@ const resources = {
       },
       calendar: {
         title: "Календарь фестивалей - Sri NandiGram"
+      },
+      location: {
+        badge: "Локация",
+        title_start: "Почему",
+        title_end: "Маяпур?",
+        subtitle: "Маяпур — одно из самых духовно значимых мест в Индии, которое привлекает миллионы преданных и искателей со всего мира.",
+        visit_us: "Посетите нас",
+        directions: "Как добраться",
+        benefits: {
+          spiritual_t: "Духовная столица",
+          spiritual_d: "Маяпур является духовной штаб-квартирой ИСККОН и крупным центром паломничества.",
+          natural_t: "Природная красота",
+          natural_d: "В окружении пышной зелени, рек и нетронутых природных ландшафтов.",
+          growing_t: "Развитая инфраструктура",
+          growing_d: "Активное развитие: школы, больницы и торговые центры поблизости.",
+          connected_t: "Транспортная доступность",
+          connected_d: "2.5 часа от Калькутты, доступ по дороге и железной дороге.",
+          access_t: "Легкий доступ",
+          access_d: "Ближайший аэропорт: международный аэропорт имени Нетаджи Субхас Чандра Боса.",
+          prime_t: "Престижное место",
+          prime_d: "Стратегическое расположение с отличным потенциалом роста стоимости."
+        }
+      },
+      villas_page: {
+        back: "Назад к недвижимости",
+        title: "Частные роскошные виллы",
+        subtitle_t: "Духовная жизнь, современный комфорт",
+        subtitle_d: "Наши виллы в Sri NandiGram спроектированы по принципам Васту-шастры, что гарантирует гармонию и позитивную энергию в вашем доме.",
+        video_title: "Посмотрите наши виллы",
+        enquiry_title: "Узнайте больше о ваших будущих виллах",
+        enquiry_subtitle: "Запишитесь на частный тур по нашим модельным домам и виллам сегодня.",
+        enquiry_cta: "Связаться с отделом продаж",
+        types: {
+          v1: "Вилла тип 1",
+          v2: "Вилла тип 2"
+        },
+        labels: {
+          exterior: "Внешний вид",
+          ground: "Первый этаж",
+          first: "Второй этаж",
+          p3d: "3D План",
+          p2d: "2D План"
+        },
+        features: {
+          p1: "Премиальная отделка",
+          p2: "Просторный дизайн"
+        }
+      },
+      apartments_page: {
+        title: "Апартаменты премиум-класса",
+        back: "Назад к недвижимости",
+        enquiry_title: "Узнайте больше о вашем будущем доме",
+        enquiry_subtitle: "Запишитесь на частный тур по нашим модельным домам сегодня.",
+        enquiry_cta: "Связаться с отделом продаж",
+        plans: {
+          p3d: "3D План",
+          p2d: "2D План"
+        },
+        options: {
+          bhk1: {
+            title: "1-комнатная квартира",
+            size: "Общая площадь 66 кв. м (710 кв. футов)",
+            desc: "Идеально подходит для духовных искателей или молодых специалистов. Отдельная спальня для уединения и просторный холл для отдыха.",
+            f1: "Планировка для духовной жизни",
+            f2: "Большой балкон",
+            f3: "Панорамное остекление",
+            f4: "Соответствие Васту"
+          },
+          bhk2: {
+            title: "2-комнатная квартира",
+            size: "Общая площадь 109 кв. м (1170 кв. футов)",
+            desc: "Идеально для растущих семей. Уникальный дизайн «без общих стен» гарантирует максимальную звукоизоляцию и естественную вентиляцию.",
+            f1: "2 балкона",
+            f2: "Гостевая комната/кабинет",
+            f3: "Просторная кухня",
+            f4: "Угловой вид"
+          }
+        }
+      },
+      map_page: {
+        back: "Назад к недвижимости",
+        hero_title: "Купить землю в Маяпуре",
+        hero_subtitle: "Закрытый поселок",
+        header_title: "Выбор участков премиум-класса",
+        header_subtitle: "Ознакомьтесь с доступными участками в самом сердце Маяпур Дхамы.",
+        enquiry_title: "Узнайте больше о ваших будущих участках",
+        enquiry_subtitle: "Готовы закрепить за собой землю? Свяжитесь с нами для уточнения цены и деталей визита.",
+        enquiry_cta: "Связаться с отделом продаж",
+        sections: {
+          s1: {
+            badge: "Доступно ограниченное количество участков",
+            title: "Обеспечьте себе священное пространство в Маяпур Дхаме",
+            desc: "Купите свое пространство в безопасном, закрытом, экологически чистом поселке. Наши участки предлагают идеальный баланс духовного спокойствия и современной инфраструктуры.",
+            vis: "Визуализация A",
+            label: "Планируемый зеленый анклав",
+            at: "в Sri NandiGram",
+            f1: "Чистые документы на право собственности",
+            f2: "Круглосуточная охрана",
+            f3: "Внутренние мощеные дороги",
+            f4: "Вода и электричество",
+            f5: "Дренажная система",
+            f6: "Зеленое окружение",
+            cta: "Узнать больше"
+          },
+          s2: {
+            badge: "Современный стиль жизни",
+            title: "Архитектурное совершенство",
+            desc: "Каждый участок стратегически расположен для обеспечения максимальной вентиляции и соответствия Васту. Постройте виллу своей мечты в поселке, созданном для преданных и искателей покоя.",
+            vis: "Визуализация B",
+            label: "Концепции роскошных вилл",
+            at: "в Sri NandiGram",
+            f1_t: "Близость к храму",
+            f1_d: "Расположен всего в 5 минутах от главных ворот храма, так что вы никогда не пропустите утреннюю мангала-арати.",
+            f2_t: "Жизнь в сообществе",
+            f2_d: "Присоединяйтесь к соседству единомышленников в безопасной, мирной и духовно насыщенной атмосфере."
+          }
+        }
       },
       change_language: "Сменить язык",
     },

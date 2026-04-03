@@ -2,43 +2,45 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { MapPin, Sparkles, TreePine, Building, Train, Plane } from 'lucide-react';
-
-const benefits = [
-  {
-    icon: Sparkles,
-    title: 'Spiritual Capital',
-    description: 'Mayapur is the spiritual headquarters of ISKCON and a major pilgrimage destination.',
-  },
-  {
-    icon: TreePine,
-    title: 'Natural Beauty',
-    description: 'Surrounded by lush greenery, rivers, and pristine natural landscapes.',
-  },
-  {
-    icon: Building,
-    title: 'Growing Infrastructure',
-    description: 'Rapid development with schools, hospitals, and commercial facilities nearby.',
-  },
-  {
-    icon: Train,
-    title: 'Well Connected',
-    description: '2.5 hours from Kolkata, accessible by road and rail.',
-  },
-  {
-    icon: Plane,
-    title: 'Easy Access',
-    description: 'Nearest airport: Netaji Subhas Chandra Bose International Airport.',
-  },
-  {
-    icon: MapPin,
-    title: 'Prime Location',
-    description: 'Strategic location with excellent appreciation potential.',
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 const LocationSection = () => {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  const benefits = [
+    {
+      icon: Sparkles,
+      title: t('location.benefits.spiritual_t'),
+      description: t('location.benefits.spiritual_d'),
+    },
+    {
+      icon: TreePine,
+      title: t('location.benefits.natural_t'),
+      description: t('location.benefits.natural_d'),
+    },
+    {
+      icon: Building,
+      title: t('location.benefits.growing_t'),
+      description: t('location.benefits.growing_d'),
+    },
+    {
+      icon: Train,
+      title: t('location.benefits.connected_t'),
+      description: t('location.benefits.connected_d'),
+    },
+    {
+      icon: Plane,
+      title: t('location.benefits.access_t'),
+      description: t('location.benefits.access_d'),
+    },
+    {
+      icon: MapPin,
+      title: t('location.benefits.prime_t'),
+      description: t('location.benefits.prime_d'),
+    },
+  ];
 
   return (
     <section id="location" className="section-padding bg-muted/30" ref={ref}>
@@ -53,13 +55,13 @@ const LocationSection = () => {
           <span className="font-heading font-bold text-[#d5b474] 
                          text-2xl md:text-3xl lg:text-4xl 
                          tracking-widest mb-2 uppercase">
-            Location
+            {t('location.badge')}
           </span>
           <h2 className="font-heading font-semibold text-lg md:text-xl text-[#2a1d0d] mb-4">
-            <span className="text-[#d5b474]">Why</span> Mayapur?
+            <span className="text-[#d5b474]">{t('location.title_start')}</span> {t('location.title_end')}
           </h2>
           <p className="section-subtitle mx-auto">
-            Mayapur is one of the most spiritually significant places in India, attracting millions of devotees and seekers from around the world.
+            {t('location.subtitle')}
           </p>
         </motion.div>
 
@@ -73,7 +75,7 @@ const LocationSection = () => {
             <div className="grid sm:grid-cols-2 gap-4">
               {benefits.map((benefit, index) => (
                 <motion.div
-                  key={benefit.title}
+                  key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -121,7 +123,7 @@ const LocationSection = () => {
                   <MapPin className="w-6 h-6 text-secondary" />
                 </div>
                 <div>
-                  <h4 className="font-heading font-semibold text-lg mb-2">Visit Us</h4>
+                  <h4 className="font-heading font-semibold text-lg mb-2">{t('location.visit_us')}</h4>
                   <p className="text-primary-foreground/80 leading-relaxed">
                     Sri NandiGram Realty<br />
                     Mayapur Road, Mayapur<br />
@@ -133,7 +135,7 @@ const LocationSection = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 mt-4 text-secondary font-heading font-semibold text-sm hover:underline"
                   >
-                    Get Directions
+                    {t('location.directions')}
                     <MapPin className="w-4 h-4" />
                   </a>
                 </div>

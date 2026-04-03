@@ -8,6 +8,7 @@ import {
   X,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import villaImg from '@/assets/plots.webp';
 import villaGround3D from '@/assets/68460886.webp';
@@ -29,30 +30,31 @@ import villaFirst2D from '@/assets/new 2.webp';
 import homeFirst2D from '@/assets/new 4.webp';
 
 const VillasPage = () => {
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const nandiVillasGallery = [
-    { src: villaExterior1, alt: 'Villa Exterior 1' },
-    { src: villaExterior2, alt: 'Villa Exterior 2' },
-    { src: homeGround3D, alt: 'Villa Ground Floor 3D Plan' },
-    { src: villaGround2D, alt: 'Villa Ground Floor 2D Plan' },
-    { src: homeFirst3D, alt: 'Villa 1st Floor 3D Plan' },
-    { src: villaFirst2D, alt: 'Villa 1st Floor 2D Plan' },
+    { src: villaExterior1, alt: t('villas_page.labels.exterior') },
+    { src: villaExterior2, alt: t('villas_page.labels.exterior') },
+    { src: homeGround3D, alt: `${t('villas_page.labels.ground')} ${t('villas_page.labels.p3d')}` },
+    { src: villaGround2D, alt: `${t('villas_page.labels.ground')} ${t('villas_page.labels.p2d')}` },
+    { src: homeFirst3D, alt: `${t('villas_page.labels.first')} ${t('villas_page.labels.p3d')}` },
+    { src: villaFirst2D, alt: `${t('villas_page.labels.first')} ${t('villas_page.labels.p2d')}` },
   ];
 
   const nandiHomesGallery = [
-    { src: villaImg, alt: 'Home Exterior 1' },
-    { src: homeExterior2, alt: 'Home Exterior 2' },
-    { src: villaGround3D, alt: 'Home Ground Floor 3D Plan' },
-    { src: homeGround2D, alt: 'Home Ground Floor 2D Plan' },
-    { src: villaFirst3D, alt: 'Home 1st Floor 3D Plan' },
-    { src: homeFirst2D, alt: 'Home 1st Floor 2D Plan' },
+    { src: villaImg, alt: t('villas_page.labels.exterior') },
+    { src: homeExterior2, alt: t('villas_page.labels.exterior') },
+    { src: villaGround3D, alt: `${t('villas_page.labels.ground')} ${t('villas_page.labels.p3d')}` },
+    { src: homeGround2D, alt: `${t('villas_page.labels.ground')} ${t('villas_page.labels.p2d')}` },
+    { src: villaFirst3D, alt: `${t('villas_page.labels.first')} ${t('villas_page.labels.p3d')}` },
+    { src: homeFirst2D, alt: `${t('villas_page.labels.first')} ${t('villas_page.labels.p2d')}` },
   ];
 
   const sections = [
-    { label: 'Exterior View' },
-    { label: 'Ground Floor', sub: ['3D Plan', '2D Plan'] },
-    { label: '1st Floor', sub: ['3D Plan', '2D Plan'] },
+    { label: t('villas_page.labels.exterior') },
+    { label: t('villas_page.labels.ground'), sub: [t('villas_page.labels.p3d'), t('villas_page.labels.p2d')] },
+    { label: t('villas_page.labels.first'), sub: [t('villas_page.labels.p3d'), t('villas_page.labels.p2d')] },
   ];
 
   return (
@@ -63,10 +65,10 @@ const VillasPage = () => {
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <div className="container-custom text-center">
             <Link to="/#properties" className="inline-flex items-center text-white mb-6">
-              <ArrowLeft className="mr-2" /> Back to Properties
+              <ArrowLeft className="mr-2" /> {t('villas_page.back')}
             </Link>
             <h1 className="text-5xl font-heading font-bold text-white">
-              Private Luxury Villas
+              {t('villas_page.title')}
             </h1>
           </div>
         </div>
@@ -76,18 +78,17 @@ const VillasPage = () => {
       <div className="container-custom py-16">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-heading font-bold mb-6 text-[#5C3A1E]">
-            Spiritual Living, Modern Comfort
+            {t('villas_page.subtitle_t')}
           </h2>
 
           <p className="text-muted-foreground mb-16 text-lg max-w-3xl mx-auto">
-            Our villas in Sri NandiGram are designed with the principles of
-            Vastu Shastra, ensuring your home is a sanctuary of positive energy.
+            {t('villas_page.subtitle_d')}
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mb-20">
             {[
-              { title: 'Villa Type 1', icon: Building2, gallery: nandiVillasGallery },
-              { title: 'Villa Type 2', icon: Home, gallery: nandiHomesGallery },
+              { title: t('villas_page.types.v1'), icon: Building2, gallery: nandiVillasGallery },
+              { title: t('villas_page.types.v2'), icon: Home, gallery: nandiHomesGallery },
             ].map((item, idx) => (
               <div
                 key={idx}
@@ -135,10 +136,10 @@ const VillasPage = () => {
 
                 <ul className="border-t pt-6 space-y-2 text-muted-foreground">
                   <li className="flex items-center justify-center gap-2">
-                    <Check className="w-5 h-5 text-secondary" /> Premium Finish
+                    <Check className="w-5 h-5 text-secondary" /> {t('villas_page.features.p1')}
                   </li>
                   <li className="flex items-center justify-center gap-2">
-                    <Check className="w-5 h-5 text-secondary" /> Spacious Design
+                    <Check className="w-5 h-5 text-secondary" /> {t('villas_page.features.p2')}
                   </li>
                 </ul>
               </div>
@@ -168,7 +169,7 @@ const VillasPage = () => {
       {/* ✅ NEW VIDEO SECTION */}
       <section className="container-custom pb-20">
         <h2 className="text-3xl md:text-4xl font-heading font-bold mb-10 text-center text-[#5C3A1E]">
-          Experience The Villas
+          {t('villas_page.video_title')}
         </h2>
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           <div className="rounded-2xl overflow-hidden shadow-xl aspect-video bg-black">
@@ -194,10 +195,10 @@ const VillasPage = () => {
       <section className="container-custom pb-24">
         <div className="bg-[#8B5E3C] rounded-[3rem] px-6 py-16 text-center text-white shadow-xl">
           <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
-            Inquire About Your Future Villas
+            {t('villas_page.enquiry_title')}
           </h2>
           <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-            Book a private tour of our model homes and villas today.
+            {t('villas_page.enquiry_subtitle')}
           </p>
           <a
             href="https://wa.me/919239633577"
@@ -205,7 +206,7 @@ const VillasPage = () => {
             rel="noopener noreferrer"
             className="inline-block bg-[#D2B06A] text-[#5C3A1E] px-10 py-4 rounded-xl font-bold text-lg shadow-lg hover:scale-105 transition-transform"
           >
-            Contact Sales Team
+            {t('villas_page.enquiry_cta')}
           </a>
         </div>
       </section>
@@ -218,7 +219,7 @@ const VillasPage = () => {
             className="inline-flex items-center gap-3 text-[#5C3A1E] font-heading font-bold text-lg hover:text-[#C19A6B] transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
-            Back to Properties
+            {t('villas_page.back')}
           </Link>
         </div>
       </section>

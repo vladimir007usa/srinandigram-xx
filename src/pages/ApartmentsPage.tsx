@@ -6,6 +6,7 @@ import {
   X,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 // ASSETS
 import apartmentHero from '@/assets/villa.webp';
@@ -15,23 +16,32 @@ import lk1bhkPlan from '@/assets/Lalita Kunj A 07.03 FT2_.webp';
 import lk2bhkPlan from '@/assets/Lalita Kunj B 07.03 FT2.webp';
 
 const ApartmentsPage = () => {
+  const { t } = useTranslation();
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
 
   const bhkOptions = [
     {
-      title: '1 BHK Apartment',
-      size: 'Total built up area 710 Sq. Ft.',
-      description:
-        'Ideal for spiritual seekers or young professionals. Designed with a separate bedroom for privacy and a spacious hall for relaxation.',
-      features: ['Spiritual Seeker’s Layout', 'Large Balcony', 'Premium Glass Finish', 'Vastu Compliant'],
+      title: t('apartments_page.options.bhk1.title'),
+      size: t('apartments_page.options.bhk1.size'),
+      description: t('apartments_page.options.bhk1.desc'),
+      features: [
+        t('apartments_page.options.bhk1.f1'),
+        t('apartments_page.options.bhk1.f2'),
+        t('apartments_page.options.bhk1.f3'),
+        t('apartments_page.options.bhk1.f4'),
+      ],
       images: [lk1bhk, lk2bhkPlan],
     },
     {
-      title: '2 BHK Apartment',
-      size: 'Total built up area 1170 Sq. Ft.',
-      description:
-        "Perfect for growing families. Our unique 'No Shared Walls' design ensures maximum acoustic privacy and natural cross-ventilation.",
-      features: ['2 Balconies', 'Guest/Study Room', 'Spacious Kitchen', 'Corner Unit View'],
+      title: t('apartments_page.options.bhk2.title'),
+      size: t('apartments_page.options.bhk2.size'),
+      description: t('apartments_page.options.bhk2.desc'),
+      features: [
+        t('apartments_page.options.bhk2.f1'),
+        t('apartments_page.options.bhk2.f2'),
+        t('apartments_page.options.bhk2.f3'),
+        t('apartments_page.options.bhk2.f4'),
+      ],
       images: [lk2bhk, lk1bhkPlan],
     },
   ];
@@ -73,10 +83,10 @@ const ApartmentsPage = () => {
             to="/#properties"
             className="text-white/90 flex items-center gap-2 mb-6 hover:text-white transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" /> Back to Properties
+            <ArrowLeft className="w-4 h-4" /> {t('apartments_page.back')}
           </Link>
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
-            Premium Apartments
+            {t('apartments_page.title')}
           </h1>
           <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full">
             <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
@@ -117,7 +127,7 @@ const ApartmentsPage = () => {
                     className="relative flex items-center justify-center cursor-zoom-in group p-4"
                   >
                     <div className="absolute top-3 left-3 z-20 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-tighter text-secondary shadow-sm border border-gray-100">
-                      {idx === 0 ? '3D Plan' : '2D Plan'}
+                      {idx === 0 ? t('apartments_page.plans.p3d') : t('apartments_page.plans.p2d')}
                     </div>
 
                     <img loading="lazy"
@@ -159,10 +169,10 @@ const ApartmentsPage = () => {
         <div className="bg-[#8B5E3C] rounded-[3rem] p-12 text-center text-white shadow-2xl relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
           <h2 className="text-3xl md:text-4xl font-bold mb-4 relative z-10">
-            Inquire About Your Future Home
+            {t('apartments_page.enquiry_title')}
           </h2>
           <p className="text-white/80 mb-8 max-w-lg mx-auto relative z-10">
-            Book a private tour of our model homes and villas today.
+            {t('apartments_page.enquiry_subtitle')}
           </p>
           <a
             href="https://wa.me/919239633577"
@@ -170,7 +180,7 @@ const ApartmentsPage = () => {
             rel="noopener noreferrer"
             className="inline-block bg-[#C5A267] hover:bg-[#b38f56] text-white font-bold px-10 py-4 rounded-xl shadow-lg transition-all hover:scale-105 relative z-10"
           >
-            Contact Sales Team
+            {t('apartments_page.enquiry_cta')}
           </a>
         </div>
       </div>
@@ -182,7 +192,7 @@ const ApartmentsPage = () => {
           className="inline-flex items-center gap-2 text-[#4A3427] font-bold text-lg hover:text-secondary transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
-          Back to Properties
+          {t('apartments_page.back')}
         </Link>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X } from 'lucide-react';
+import { MessageCircle, X, Calendar } from 'lucide-react';
+import CalendarModal from './CalendarModal';
 
 const FloatingCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,6 +34,17 @@ const FloatingCTA = () => {
                   exit={{ opacity: 0, y: 20 }}
                   className="absolute bottom-16 right-0 flex flex-col gap-3"
                 >
+                  <CalendarModal
+                    trigger={
+                      <button className="flex items-center gap-3 px-4 py-3 bg-secondary text-white rounded-full shadow-lg hover:shadow-xl transition-shadow">
+                        <Calendar className="w-5 h-5" />
+                        <span className="font-heading font-medium text-sm whitespace-nowrap">
+                          Festivals
+                        </span>
+                      </button>
+                    }
+                  />
+
                   <a
                     href="https://wa.me/919239633577"
                     target="_blank"

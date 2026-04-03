@@ -1,4 +1,5 @@
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Calendar } from 'lucide-react';
+import CalendarModal from './CalendarModal';
 
 /* =======================
     Official Brand Icons 
@@ -112,6 +113,16 @@ const Footer = () => {
                     </a>
                   </li>
                 ))}
+                <li>
+                  <CalendarModal
+                    trigger={
+                      <button className="text-primary-foreground/70 hover:text-secondary flex items-center gap-2">
+                        <Calendar className="w-3 h-3" />
+                        Festivals Calendar
+                      </button>
+                    }
+                  />
+                </li>
               </ul>
             </div>
 

@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Calendar } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import CalendarModal from './CalendarModal';
 
 const FloatingCTA = () => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -39,7 +41,7 @@ const FloatingCTA = () => {
                       <button className="flex items-center gap-3 px-4 py-3 bg-secondary text-white rounded-full shadow-lg hover:shadow-xl transition-shadow">
                         <Calendar className="w-5 h-5" />
                         <span className="font-heading font-medium text-sm whitespace-nowrap">
-                          Festivals
+                          {t('cta.festivals')}
                         </span>
                       </button>
                     }
@@ -53,7 +55,7 @@ const FloatingCTA = () => {
                   >
                     <MessageCircle className="w-5 h-5 fill-current" />
                     <span className="font-heading font-medium text-sm whitespace-nowrap">
-                      Message Us
+                      {t('cta.message')}
                     </span>
                   </a>
                 </motion.div>

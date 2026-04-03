@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Calendar } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import CalendarModal from './CalendarModal';
 
 /* =======================
@@ -37,19 +38,26 @@ const YouTubeIcon = () => (
     Data Config
 ======================= */
 
+const navLinks = [
+  { name: 'nav.home', href: '/', id: 'home' },
+  { name: 'nav.properties', href: '/#properties', id: 'properties' },
+  { name: 'nav.about', href: '/#about', id: 'about' },
+  { name: 'nav.location', href: '/#location', id: 'location' },
+  { name: 'nav.contact', href: '/#contact', id: 'contact' },
+];
+
 const quickLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Properties', href: '#properties' },
-  { name: 'Gallery', href: '#gallery' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'footer.links.home', href: '#home', id: 'home' },
+  { name: 'footer.links.about', href: '#about', id: 'about' },
+  { name: 'footer.links.gallery', href: '#gallery', id: 'gallery' },
+  { name: 'footer.links.contact', href: '#contact', id: 'contact' },
 ];
 
 const propertyLinks = [
-  { name: 'Premium Plots', href: '#properties' },
-  { name: 'Luxury Villas', href: '#properties' },
-  { name: 'Open Land', href: '#properties' },
-  { name: 'Pricing', href: '#pricing' },
+  { name: 'footer.links.plots', href: '#properties', id: 'plots' },
+  { name: 'footer.links.villas', href: '#properties', id: 'villas' },
+  { name: 'footer.links.land', href: '#properties', id: 'land' },
+  { name: 'footer.links.pricing', href: '#pricing', id: 'pricing' },
 ];
 
 /* =======================
@@ -57,6 +65,7 @@ const propertyLinks = [
 ======================= */
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -70,14 +79,13 @@ const Footer = () => {
           <div>
             <h3 className="font-para text-2xl font-bold mb-4">Sri NandiGram</h3>
             <p className="text-primary-foreground/70 text-sm mb-6">
-              A premium gated community in Mayapur offering luxury villas,
-              plots, and spiritual living in harmony with nature.
+              {t('footer.description')}
             </p>
             <div className="flex gap-4">
               <a
                 href="https://wa.me/919239633577"
                 target="_blank"
-                aria-label="WhatsApp"
+                aria-label={t('contact.info.whatsapp')}
                 className="p-3 bg-white rounded-lg hover:scale-110 transition-transform shadow-sm"
               >
                 <WhatsAppIcon />
@@ -104,12 +112,12 @@ const Footer = () => {
           {/* QUICK LINKS + PROPERTIES */}
           <div className="grid grid-cols-2 gap-10 lg:col-span-2">
             <div>
-              <h4 className="font-heading font-semibold text-lg mb-4">Quick Links</h4>
+              <h4 className="font-heading font-semibold text-lg mb-4">{t('footer.quick_links')}</h4>
               <ul className="grid grid-cols-2 gap-y-3 text-sm">
                 {quickLinks.map(link => (
-                  <li key={link.name}>
+                  <li key={link.id}>
                     <a href={link.href} className="text-primary-foreground/70 hover:text-secondary">
-                      {link.name}
+                      {t(link.name)}
                     </a>
                   </li>
                 ))}
@@ -118,7 +126,7 @@ const Footer = () => {
                     trigger={
                       <button className="text-primary-foreground/70 hover:text-secondary flex items-center gap-2">
                         <Calendar className="w-3 h-3" />
-                        Festivals Calendar
+                        {t('footer.festivals')}
                       </button>
                     }
                   />
@@ -127,12 +135,12 @@ const Footer = () => {
             </div>
 
             <div>
-              <h4 className="font-heading font-semibold text-lg mb-4">Properties</h4>
+              <h4 className="font-heading font-semibold text-lg mb-4">{t('footer.properties')}</h4>
               <ul className="grid grid-cols-2 gap-y-3 text-sm">
                 {propertyLinks.map(link => (
-                  <li key={link.name}>
+                  <li key={link.id}>
                     <a href={link.href} className="text-primary-foreground/70 hover:text-secondary">
-                      {link.name}
+                      {t(link.name)}
                     </a>
                   </li>
                 ))}
@@ -142,7 +150,7 @@ const Footer = () => {
 
           {/* Contact Us */}
           <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Contact Us</h4>
+            <h4 className="font-heading font-semibold text-lg mb-4">{t('footer.contact_us')}</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4" /> +91 9239633577
@@ -152,7 +160,7 @@ const Footer = () => {
               </li>
               <li className="flex gap-3">
                 <MapPin className="w-4 h-4 mt-1" />
-                Mayapur Road, Nadia, West Bengal, India
+                {t('contact.info.address')}
               </li>
             </ul>
           </div>
@@ -161,7 +169,7 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-primary-foreground/10 py-6 text-center text-sm text-primary-foreground/60">
-        © {currentYear} Sri NandiGram Realty. All rights reserved.
+        © {currentYear} Sri NandiGram Realty. {t('footer.rights')}
       </div>
     </footer>
   );

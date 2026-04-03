@@ -18,6 +18,12 @@ const resources = {
         about: "Our Story",
         location: "Location",
         contact: "Contact Us",
+        gallery: "Gallery",
+        villas: "Villas",
+        apartments: "Apartments",
+        map: "Map",
+        switch_ru: "Switch to Russian",
+        switch_en: "Switch to English",
       },
       hero: {
         location: "Mayapur, West Bengal, India",
@@ -136,7 +142,68 @@ const resources = {
         title_start: "Explore",
         title_end: "Our Vision",
         video1_title: "Sri NandiGram Journey",
-        video2_title: "Sri NandiGram Experience"
+        video2_title: "Sri NandiGram Experience",
+        video3_title: "Sri NandiGram Festival"
+      },
+      contact: {
+        badge: "Get In Touch",
+        title_start: "Start Your",
+        title_end: "Journey",
+        subtitle: "Ready to make Sri NandiGram your home? Fill out the form and our team will reach out.",
+        form: {
+          name: "Full Name *",
+          name_placeholder: "Your name",
+          email: "Email Address *",
+          email_placeholder: "your@email.com",
+          phone: "Phone Number *",
+          interest: "Interested In *",
+          interest_placeholder: "Select property type",
+          message: "Message",
+          message_placeholder: "Tell us about your requirements...",
+          sending: "Sending...",
+          submit: "Submit Inquiry"
+        },
+        info: {
+          title: "Quick Contact",
+          call: "Call Us",
+          email: "Email Us",
+          whatsapp: "WhatsApp",
+          whatsapp_sub: "Chat with our team",
+          office: "Our Office",
+          address: "Sri NandiGram Realty, Mayapur Road, Mayapur, Nadia District, West Bengal, India"
+        },
+        success: {
+          title: "Inquiry Received!",
+          message: "Thank you for reaching out to Sri NandiGram. We have received your details and our team will contact you shortly.",
+          button: "Go Back"
+        }
+      },
+      footer: {
+        description: "A premium gated community in Mayapur offering luxury villas, plots, and spiritual living in harmony with nature.",
+        quick_links: "Quick Links",
+        properties: "Properties",
+        contact_us: "Contact Us",
+        festivals: "Festivals Calendar",
+        privacy: "Privacy Policy",
+        terms: "Terms & Conditions",
+        rights: "All rights reserved.",
+        links: {
+          plots: "Premium Plots",
+          villas: "Luxury Villas",
+          land: "Open Land",
+          pricing: "Pricing",
+          home: "Home",
+          about: "About",
+          gallery: "Gallery",
+          contact: "Contact"
+        }
+      },
+      cta: {
+        festivals: "Festivals",
+        message: "Message Us"
+      },
+      calendar: {
+        title: "Festivals Calendar - Sri NandiGram"
       },
       change_language: "Language",
     },
@@ -149,6 +216,12 @@ const resources = {
         about: "О Нас",
         location: "Локация",
         contact: "Контакты",
+        gallery: "Галерея",
+        villas: "Виллы",
+        apartments: "Апартаменты",
+        map: "Карта",
+        switch_ru: "Переключить на русский",
+        switch_en: "Переключить на английский",
       },
       hero: {
         location: "Маяпур, Западная Бенгалия, Индия",
@@ -267,7 +340,68 @@ const resources = {
         title_start: "Узнайте о",
         title_end: "Нашем Видении",
         video1_title: "Путешествие в Шри НандиГрам",
-        video2_title: "Опыт в Шри НандиГрам"
+        video2_title: "Опыт в Шри НандиГрам",
+        video3_title: "Фестиваль Шри НандиГрам"
+      },
+      contact: {
+        badge: "Свяжитесь с нами",
+        title_start: "Начните свое",
+        title_end: "Путешествие",
+        subtitle: "Готовы сделать Sri NandiGram своим домом? Заполните форму, и наша команда свяжется с вами.",
+        form: {
+          name: "Полное имя *",
+          name_placeholder: "Ваше имя",
+          email: "Электронная почта *",
+          email_placeholder: "your@email.com",
+          phone: "Номер телефона *",
+          interest: "Вас интересует *",
+          interest_placeholder: "Выберите тип недвижимости",
+          message: "Сообщение",
+          message_placeholder: "Расскажите нам о ваших требованиях...",
+          sending: "Отправка...",
+          submit: "Отправить запрос"
+        },
+        info: {
+          title: "Быстрая связь",
+          call: "Позвоните нам",
+          email: "Напишите нам",
+          whatsapp: "WhatsApp",
+          whatsapp_sub: "Чат с нашей командой",
+          office: "Наш офис",
+          address: "Sri NandiGram Realty, Mayapur Road, Mayapur, Nadia District, West Bengal, India"
+        },
+        success: {
+          title: "Запрос получен!",
+          message: "Спасибо, что обратились в Sri NandiGram. Мы получили ваши данные, и наша команда свяжется с вами в ближайшее время.",
+          button: "Вернуться"
+        }
+      },
+      footer: {
+        description: "Жилой комплекс премиум-класса в Маяпуре, предлагающий роскошные виллы, участки и духовную жизнь в гармонии с природой.",
+        quick_links: "Быстрые ссылки",
+        properties: "Недвижимость",
+        contact_us: "Контакты",
+        festivals: "Календарь фестивалей",
+        privacy: "Политика конфиденциальности",
+        terms: "Условия использования",
+        rights: "Все права защищены.",
+        links: {
+          plots: "Земельные участки",
+          villas: "Роскошные виллы",
+          land: "Свободная земля",
+          pricing: "Цены",
+          home: "Главная",
+          about: "О нас",
+          gallery: "Галерея",
+          contact: "Контакты"
+        }
+      },
+      cta: {
+        festivals: "Фестивали",
+        message: "Напишите нам"
+      },
+      calendar: {
+        title: "Календарь фестивалей - Sri NandiGram"
       },
       change_language: "Сменить язык",
     },

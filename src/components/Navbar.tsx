@@ -6,11 +6,11 @@ import { useTranslation } from 'react-i18next';
 import logo from '@/assets/logo.webp';
 
 const navLinks = [
-  { name: 'Home', href: '/', id: 'home' }, // href remains '/' to avoid #home
-  { name: 'Properties', href: '/#properties', id: 'properties' },
-  { name: 'Our Story', href: '/#about', id: 'about' },
-  { name: 'Location', href: '/#location', id: 'location' },
-  { name: 'Contact Us', href: '/#contact', id: 'contact' },
+  { name: 'nav.home', href: '/', id: 'home' },
+  { name: 'nav.properties', href: '/#properties', id: 'properties' },
+  { name: 'nav.about', href: '/#about', id: 'about' },
+  { name: 'nav.location', href: '/#location', id: 'location' },
+  { name: 'nav.contact', href: '/#contact', id: 'contact' },
 ];
 
 const Navbar = () => {
@@ -140,7 +140,7 @@ const Navbar = () => {
                   onClick={toggleLanguage}
                   className="flex items-center justify-between font-heading text-sm font-bold uppercase text-[#C19A6B]"
                 >
-                  <span>{i18n.language.startsWith('en') ? 'Switch to Russian' : 'Switch to English'}</span>
+                  <span>{i18n.language.startsWith('en') ? t('nav.switch_ru') : t('nav.switch_en')}</span>
                   <Globe className="w-4 h-4" />
                 </button>
               </div>

@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import FestivalCalendarContent from "./FestivalCalendarContent";
 import { Calendar } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 interface CalendarModalProps {
   trigger?: React.ReactNode;
@@ -16,6 +17,7 @@ interface CalendarModalProps {
 }
 
 const CalendarModal = ({ trigger, open, onOpenChange }: CalendarModalProps) => {
+  const { t } = useTranslation();
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
@@ -23,7 +25,7 @@ const CalendarModal = ({ trigger, open, onOpenChange }: CalendarModalProps) => {
         <DialogHeader className="p-6 bg-primary text-primary-foreground">
           <DialogTitle className="flex items-center gap-2 font-heading text-xl">
             <Calendar className="w-6 h-6 text-secondary" />
-            Festivals Calendar - Sri NandiGram
+            {t('calendar.title')}
           </DialogTitle>
         </DialogHeader>
         <div className="flex-1 overflow-y-auto p-2 bg-cream-dark/20 h-full">

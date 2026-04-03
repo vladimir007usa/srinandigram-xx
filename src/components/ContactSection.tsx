@@ -3,17 +3,19 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Send, Phone, Mail, MapPin, MessageCircle, CheckCircle, Loader2 } from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
-
-const propertyTypes = [
-  'Premium Villa',
-  'Luxury Apartments',
-  'Plots Allocation',
-];
+import { useTranslation } from 'react-i18next';
 
 const ContactSection = () => {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   
+  const propertyTypes = [
+    t('offerings.villas.title'),
+    t('offerings.apartments.title'),
+    t('offerings.plots.title'),
+  ];
+
   // Formspree Integration with your provided ID
   const [state, handleSubmit] = useForm("xvzajgkp");
 
@@ -30,15 +32,17 @@ const ContactSection = () => {
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-12 h-12 text-green-600" />
             </div>
-            <h2 className="text-3xl font-bold text-[#2a1d0d] mb-4">Inquiry Received!</h2>
+            <h2 className="text-3xl font-bold text-[#2a1d0d] mb-4">
+              {t('contact.success.title')}
+            </h2>
             <p className="text-muted-foreground mb-8">
-              Thank you for reaching out to Sri NandiGram. We have received your details and our team will contact you shortly.
+              {t('contact.success.message')}
             </p>
             <button 
               onClick={() => window.location.reload()} 
               className="bg-[#d5b474] text-white px-8 py-3 rounded-xl font-bold hover:bg-[#2a1d0d] transition-all"
             >
-              Go Back
+              {t('contact.success.button')}
             </button>
           </motion.div>
         </div>
@@ -57,13 +61,13 @@ const ContactSection = () => {
           className="text-center mb-16"
         >
           <span className="font-heading font-bold text-[#d5b474] text-2xl md:text-3xl lg:text-4xl tracking-widest mb-2 uppercase block">
-            Get In Touch
+            {t('contact.badge')}
           </span>
           <h2 className="font-heading font-semibold text-lg md:text-xl text-[#2a1d0d] mb-4">
-            <span className="text-[#d5b474]">Start Your</span> Journey
+            <span className="text-[#d5b474]">{t('contact.title_start')}</span> {t('contact.title_end')}
           </h2>
           <p className="max-w-2xl mx-auto text-muted-foreground">
-            Ready to make Sri NandiGram your home? Fill out the form and our team will reach out.
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
@@ -80,14 +84,14 @@ const ContactSection = () => {
                 {/* Name */}
                 <div>
                   <label htmlFor="full-name" className="block text-sm font-bold text-[#2a1d0d] mb-2">
-                    Full Name *
+                    {t('contact.form.name')}
                   </label>
                   <input
                     type="text"
                     id="full-name"
                     name="name"
                     required
-                    placeholder="Your name"
+                    placeholder={t('contact.form.name_placeholder')}
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#d5b474]/50 focus:border-[#d5b474] transition-all"
                   />
                   <ValidationError prefix="Name" field="name" errors={state.errors} />
@@ -96,14 +100,14 @@ const ContactSection = () => {
                 {/* Email */}
                 <div>
                   <label htmlFor="email-address" className="block text-sm font-bold text-[#2a1d0d] mb-2">
-                    Email Address *
+                    {t('contact.form.email')}
                   </label>
                   <input
                     type="email"
                     id="email-address"
                     name="email"
                     required
-                    placeholder="your@email.com"
+                    placeholder={t('contact.form.email_placeholder')}
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#d5b474]/50 focus:border-[#d5b474] transition-all"
                   />
                   <ValidationError prefix="Email" field="email" errors={state.errors} />
@@ -112,7 +116,7 @@ const ContactSection = () => {
                 {/* Phone */}
                 <div>
                   <label htmlFor="phone-number" className="block text-sm font-bold text-[#2a1d0d] mb-2">
-                    Phone Number *
+                    {t('contact.form.phone')}
                   </label>
                   <input
                     type="tel"
@@ -127,7 +131,7 @@ const ContactSection = () => {
                 {/* Property Type */}
                 <div>
                   <label htmlFor="property-type" className="block text-sm font-bold text-[#2a1d0d] mb-2">
-                    Interested In *
+                    {t('contact.form.interest')}
                   </label>
                   <select
                     id="property-type"
@@ -135,7 +139,7 @@ const ContactSection = () => {
                     required
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#d5b474]/50 focus:border-[#d5b474] transition-all"
                   >
-                    <option value="">Select property type</option>
+                    <option value="">{t('contact.form.interest_placeholder')}</option>
                     {propertyTypes.map((type) => (
                       <option key={type} value={type}>{type}</option>
                     ))}
@@ -146,13 +150,13 @@ const ContactSection = () => {
               {/* Message */}
               <div className="mb-6">
                 <label htmlFor="message-content" className="block text-sm font-bold text-[#2a1d0d] mb-2">
-                  Message
+                  {t('contact.form.message')}
                 </label>
                 <textarea
                   id="message-content"
                   name="message"
                   rows={4}
-                  placeholder="Tell us about your requirements..."
+                  placeholder={t('contact.form.message_placeholder')}
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#d5b474]/50 focus:border-[#d5b474] transition-all resize-none"
                 />
                 <ValidationError prefix="Message" field="message" errors={state.errors} />
@@ -167,12 +171,12 @@ const ContactSection = () => {
                 {state.submitting ? (
                   <>
                     <Loader2 className="w-5 h-5 animate-spin" />
-                    Sending...
+                    {t('contact.form.sending')}
                   </>
                 ) : (
                   <>
                     <Send className="w-5 h-5" />
-                    Submit Inquiry
+                    {t('contact.form.submit')}
                   </>
                 )}
               </button>
@@ -188,14 +192,14 @@ const ContactSection = () => {
           >
             {/* Quick Contact Card */}
             <div className="bg-[#5C3A1E] p-8 rounded-2xl text-white shadow-xl">
-              <h3 className="font-heading text-xl font-bold mb-6">Quick Contact</h3>
+              <h3 className="font-heading text-xl font-bold mb-6">{t('contact.info.title')}</h3>
               <div className="space-y-4">
                 <a href="tel:+919239633577" className="flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors">
                   <div className="p-3 bg-[#d5b474] rounded-lg">
                     <Phone className="w-5 h-5 text-[#5C3A1E]" />
                   </div>
                   <div>
-                    <p className="text-xs text-white/70 mb-1 uppercase tracking-tighter">Call Us</p>
+                    <p className="text-xs text-white/70 mb-1 uppercase tracking-tighter">{t('contact.info.call')}</p>
                     <p className="font-bold">+91 9239633577</p>
                   </div>
                 </a>
@@ -205,7 +209,7 @@ const ContactSection = () => {
                     <Mail className="w-5 h-5 text-[#5C3A1E]" />
                   </div>
                   <div>
-                    <p className="text-xs text-white/70 mb-1 uppercase tracking-tighter">Email Us</p>
+                    <p className="text-xs text-white/70 mb-1 uppercase tracking-tighter">{t('contact.info.email')}</p>
                     <p className="font-bold">nandigram1008@gmail.com</p>
                   </div>
                 </a>
@@ -221,8 +225,8 @@ const ContactSection = () => {
                     <MessageCircle className="w-5 h-5 text-[#5C3A1E]" />
                   </div>
                   <div>
-                    <p className="text-xs text-white/70 mb-1 uppercase tracking-tighter">WhatsApp</p>
-                    <p className="font-bold">Chat with our team</p>
+                    <p className="text-xs text-white/70 mb-1 uppercase tracking-tighter">{t('contact.info.whatsapp')}</p>
+                    <p className="font-bold">{t('contact.info.whatsapp_sub')}</p>
                   </div>
                 </a>
               </div>
@@ -234,7 +238,7 @@ const ContactSection = () => {
                 <MapPin className="w-5 h-5 text-[#d5b474]" />
               </div>
               <div>
-                <h4 className="font-bold text-[#2a1d0d] mb-2">Our Office</h4>
+                <h4 className="font-bold text-[#2a1d0d] mb-2">{t('contact.info.office')}</h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   Sri NandiGram Realty<br />
                   Mayapur Road, Mayapur<br />

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar } from 'lucide-react';
+import { MessageCircle, X, Calendar } from 'lucide-react';
 
 const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className}>
@@ -101,7 +101,7 @@ const FloatingCTA = () => {
               {isExpanded ? (
                 <X className="w-6 h-6" />
               ) : (
-                <WhatsAppIcon className="w-6 h-6" />
+                <MessageCircle className="w-6 h-6 fill-current" />
               )}
             </motion.button>
           </div>

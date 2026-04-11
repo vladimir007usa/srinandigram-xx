@@ -110,7 +110,7 @@ const AboutSection = () => {
                       />
                     </div>
                   </div>
-                  <div className="absolute -bottom-4 -right-4 w-24 h-24 border-4 border-secondary/20 rounded-xl -z-10" />
+                  <div className="absolute -bottom-4 -right-4 w-24 h-24 border-4 border-secondary/20 rounded-xl -z-10 hidden md:block" />
                 </div>
 
                 <div>

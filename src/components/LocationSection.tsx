@@ -133,7 +133,11 @@ const LocationSection = () => {
                     href="https://maps.app.goo.gl/RAyitsENAQxcZLBK6"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 mt-4 text-secondary font-heading font-semibold text-sm hover:underline"
+                    className="inline-flex items-center gap-2 mt-4 px-6 py-2.5
+                               bg-[#d5b474] text-[#2a1d0d] font-heading font-bold text-sm
+                               rounded-full shadow-md
+                               hover:bg-[#e8ca8a] hover:shadow-lg hover:scale-[1.03]
+                               active:scale-95 transition-all duration-300"
                   >
                     {t('location.directions')}
                     <MapPin className="w-4 h-4" />

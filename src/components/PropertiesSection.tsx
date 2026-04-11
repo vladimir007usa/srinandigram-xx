@@ -61,7 +61,7 @@ const PropertiesSection = () => {
   ];
 
   const whatsappUrl = `https://wa.me/919239633577?text=${encodeURIComponent(
-    'Hello! I am interested in Sri NandiGram properties.'
+    'Hare Krishna, I would like to know more about Sri NandiGram'
   )}`;
 
   return (

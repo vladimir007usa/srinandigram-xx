@@ -1,14 +1,16 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { Send, Phone, Mail, MapPin, MessageCircle, CheckCircle, Loader2 } from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
 import { useTranslation } from 'react-i18next';
+import { PhoneInput } from './ui/phone-input';
 
 const ContactSection = () => {
   const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [phoneNumber, setPhoneNumber] = useState('');
   
   const propertyTypes = [
     t('offerings.villas.title'),
@@ -118,13 +120,13 @@ const ContactSection = () => {
                   <label htmlFor="phone-number" className="block text-sm font-bold text-[#2a1d0d] mb-2">
                     {t('contact.form.phone')}
                   </label>
-                  <input
-                    type="tel"
+                  <PhoneInput
                     id="phone-number"
                     name="phone"
                     required
-                    placeholder="+91 XXXXX XXXXX"
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#d5b474]/50 focus:border-[#d5b474] transition-all"
+                    value={phoneNumber}
+                    onChange={(phone) => setPhoneNumber(phone)}
+                    placeholder={t('contact.form.phone_placeholder') || "+91 XXXXX XXXXX"}
                   />
                 </div>
 

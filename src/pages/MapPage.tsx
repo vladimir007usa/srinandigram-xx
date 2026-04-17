@@ -39,9 +39,9 @@ const MapPage = () => {
         {/* Back to Properties Link */}
         <Link 
           to="/#properties" 
-          className="absolute top-8 left-1/2 -translate-x-1/2 z-50 inline-flex items-center text-white/90 hover:text-white hover:bg-black/40 transition-all font-bold group bg-black/20 px-6 py-2.5 rounded-full backdrop-blur-md border border-white/10"
+          className="absolute top-8 left-1/2 -translate-x-1/2 z-50 inline-flex items-center text-white/90 hover:text-white hover:bg-black/40 transition-all font-bold group bg-black/20 px-8 py-3 rounded-full backdrop-blur-md border border-white/10 text-lg md:text-xl"
         >
-          <ArrowLeft className="mr-2 w-5 h-5 transition-transform group-hover:-translate-x-1" /> 
+          <ArrowLeft className="mr-2 w-6 h-6 transition-transform group-hover:-translate-x-1" /> 
           {t('map_page.back')}
         </Link>
 
@@ -229,9 +229,9 @@ const MapPage = () => {
       <div className="container-custom pb-24 text-center">
         <Link
           to="/#properties"
-          className="inline-flex items-center gap-2 text-[#4A3427] font-bold text-lg hover:text-secondary transition-colors"
+          className="inline-flex items-center gap-2 text-[#4A3427] font-bold text-xl md:text-2xl hover:text-secondary transition-colors"
         >
-          <ArrowLeft className="w-5 h-5" />
+          <ArrowLeft className="w-6 h-6" />
           {t('map_page.back')}
         </Link>
       </div>

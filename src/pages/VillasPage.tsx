@@ -64,8 +64,8 @@ const VillasPage = () => {
         <img loading="lazy" src={villaImg} className="w-full h-full object-cover" alt="Luxury Villa" />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <div className="container-custom text-center">
-            <Link to="/#properties" className="inline-flex items-center text-white mb-6">
-              <ArrowLeft className="mr-2" /> {t('villas_page.back')}
+            <Link to="/#properties" className="inline-flex items-center text-white mb-6 text-lg md:text-xl">
+              <ArrowLeft className="mr-2 w-6 h-6" /> {t('villas_page.back')}
             </Link>
             <h1 className="text-5xl font-heading font-bold text-white">
               {t('villas_page.title')}
@@ -216,9 +216,9 @@ const VillasPage = () => {
         <div className="text-center">
           <Link
             to="/#properties"
-            className="inline-flex items-center gap-3 text-[#5C3A1E] font-heading font-bold text-lg hover:text-[#C19A6B] transition-colors"
+            className="inline-flex items-center gap-3 text-[#5C3A1E] font-heading font-bold text-xl md:text-2xl hover:text-[#C19A6B] transition-colors"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-6 h-6" />
             {t('villas_page.back')}
           </Link>
         </div>

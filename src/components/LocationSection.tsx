@@ -104,13 +104,14 @@ const LocationSection = () => {
           >
             <div className="bg-card rounded-xl overflow-hidden shadow-elevated border border-border/50">
               <iframe
+                id="gmap_canvas"
                 src="https://www.google.com/maps?q=Sri+NandiGram+Mayapur+West+Bengal&output=embed"
                 width="100%"
                 height="350"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="strict-origin-when-cross-origin"
                 title="Sri NandiGram Location Map"
                 className="w-full"
               />

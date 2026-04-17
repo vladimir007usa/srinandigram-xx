@@ -81,9 +81,9 @@ const ApartmentsPage = () => {
         <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-6">
           <Link
             to="/#properties"
-            className="text-white/90 flex items-center gap-2 mb-6 hover:text-white transition-colors"
+            className="text-white/90 flex items-center gap-2 mb-6 hover:text-white transition-colors text-lg md:text-xl"
           >
-            <ArrowLeft className="w-4 h-4" /> {t('apartments_page.back')}
+            <ArrowLeft className="w-6 h-6" /> {t('apartments_page.back')}
           </Link>
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
             {t('apartments_page.title')}
@@ -189,9 +189,9 @@ const ApartmentsPage = () => {
       <div className="container-custom pb-24 text-center">
         <Link
           to="/#properties"
-          className="inline-flex items-center gap-2 text-[#4A3427] font-bold text-lg hover:text-secondary transition-colors"
+          className="inline-flex items-center gap-2 text-[#4A3427] font-bold text-xl md:text-2xl hover:text-secondary transition-colors"
         >
-          <ArrowLeft className="w-5 h-5" />
+          <ArrowLeft className="w-6 h-6" />
           {t('apartments_page.back')}
         </Link>
       </div>

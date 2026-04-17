@@ -16,7 +16,7 @@ const HeroSection = () => {
     >
       {/* Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <img fetchPriority="high" loading="eager"
+        <img loading="eager"
           src={heroBanner}
           alt="Sri NandiGram luxury villa community in Mayapur"
           className="w-full h-full object-cover"

@@ -52,6 +52,7 @@ const VideoSection = () => {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
+                    loading="lazy"
                   ></iframe>
                 </div>
                 <p className="mt-4 text-center text-sm font-semibold text-[#4A3728] opacity-80">

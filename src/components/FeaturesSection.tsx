@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { 
   Sprout, Leaf, GraduationCap, BookOpen, Flame, Baby, 
   TreePine, HandHeart, Building, Hotel, Shield, Wifi, 
-  Droplets, Sun, Target, ShoppingBag, Waves, ChevronDown, ChevronUp 
+  Droplets, Sun, Target, ShoppingBag, Waves, Plus, Minus, ArrowRight
 } from 'lucide-react';
 
 import organicGarden from '@/assets/organic-garden.webp';
@@ -27,94 +27,107 @@ import archery from '@/assets/archery.webp';
 import grocery from '@/assets/grocery.webp';
 import stp from '@/assets/stp.webp';
 
+interface FeatureItem {
+  icon: any;
+  title: string;
+  image: string;
+  link?: string;
+}
+
+interface CategoryBoxProps {
+  title: string;
+  items: FeatureItem[];
+  targetPath: string;
+  delay?: number;
+  isInView: boolean;
+}
+
+const CategoryBox = ({ title, items, targetPath, delay = 0, isInView }: CategoryBoxProps) => {
+  const { t } = useTranslation();
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay }}
+      className="bg-white rounded-2xl p-2 shadow-md border border-gray-100 flex flex-col hover:shadow-xl transition-all duration-500"
+    >
+      <h3 className="font-heading font-black text-[#5C3A1E] mb-1.5 pb-1 border-b border-[#d5b474]/30 uppercase tracking-wider cursor-default select-none min-h-[3rem] flex items-center text-sm sm:text-lg">
+        {title}
+      </h3>
+      
+      <div className="grid grid-cols-2 gap-x-1 gap-y-0.5 content-start">
+        {items.slice(0, 4).map((item, idx) => (
+          <div key={idx} className="group relative rounded-sm overflow-hidden aspect-square shadow-sm hover:shadow-md transition-all duration-300">
+            <img 
+              src={item.image} 
+              alt={item.title} 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+            <div className="absolute inset-0 p-1 flex flex-col justify-end">
+              <item.icon className="w-5 h-5 text-[#d5b474] mb-1" />
+              <p className="text-white text-[10px] sm:text-xs font-bold leading-tight uppercase tracking-wide whitespace-pre-line">
+                {item.title}
+              </p>
+            </div>
+            {item.link && (
+              <a href={item.link} target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-10" />
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-auto pt-4">
+        <Link 
+          to={targetPath}
+          className="w-full flex items-center justify-center gap-2 py-3 text-sm font-bold bg-[#d5b474] text-[#2a1d0d] rounded-lg shadow-md hover:bg-[#e8ca8a] hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all duration-300 uppercase tracking-wide"
+        >
+          <Plus className="w-4 h-4" />
+          {t('features.btn_more')}
+        </Link>
+      </div>
+    </motion.div>
+  );
+};
+
 const FeaturesSection = () => {
   const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [showFullContent, setShowFullContent] = useState(false);
 
-  const ecoLiving = [
-    { icon: Sprout, title: t('features.items.garden_t'), description: t('features.items.garden_d'), image: organicGarden },
-    { icon: Leaf, title: t('features.items.bee_t'), description: t('features.items.bee_d'), image: beekeeping },
-    { icon: TreePine, title: t('features.items.grove_t'), description: t('features.items.grove_d'), image: mangoGrove },
+  const ecoCategories = [
+    { icon: Sprout, title: t('features.items.garden_t'), image: organicGarden },
+    { icon: Leaf, title: t('features.items.bee_t'), image: beekeeping },
+    { icon: TreePine, title: t('features.items.grove_t'), image: mangoGrove },
+    { icon: ShoppingBag, title: t('features.items.grocery_t'), image: grocery },
   ];
 
-  const amenities = [
-    { icon: Shield, title: t('features.items.security_t'), description: t('features.items.security_d'), image: securityGate },
-    { icon: ShoppingBag, title: t('features.items.grocery_t'), description: t('features.items.grocery_d'), image: grocery },
-    { icon: Hotel, title: t('features.items.guest_t'), description: t('features.items.guest_d'), image: guestHouse },
-    { icon: Droplets, title: t('features.items.water_t'), description: t('features.items.water_d'), image: waterTreatment },
-    { icon: Waves, title: t('features.items.stp_t'), description: t('features.items.stp_d'), image: stp },
-    { icon: Wifi, title: t('features.items.wifi_t'), description: t('features.items.wifi_d'), image: internetFacility },
+  const amenitiesCategories = [
+    { icon: Shield, title: t('features.items.security_t'), image: securityGate },
+    { icon: Hotel, title: t('features.items.guest_t'), image: guestHouse },
+    { icon: Droplets, title: t('features.items.water_t'), image: waterTreatment },
+    { icon: Waves, title: t('features.items.stp_t'), image: stp },
   ];
 
-  const devotionalLife = [
-    { icon: Building, title: t('features.items.temple_t'), description: t('features.items.temple_d'), image: temple },
-    { icon: Flame, title: t('features.items.yajna_t'), description: t('features.items.yajna_d'), image: yajnaSala },
-    // Added the external link here
-    { icon: HandHeart, title: t('features.items.gau_t'), description: t('features.items.gau_d'), image: gauSanctuary, link: 'https://www.nandisanctuary.com/' },
+  const vcfCategories = [
+    { icon: Building, title: t('features.items.temple_t'), image: temple },
+    { icon: Flame, title: t('features.items.yajna_t'), image: yajnaSala },
+    { icon: BookOpen, title: t('features.items.gita_t'), image: gitaPathshala },
+    { icon: GraduationCap, title: t('features.items.college_t'), image: varnashramCollege },
   ];
 
-  const education = [
-    { icon: GraduationCap, title: t('features.items.college_t'), description: t('features.items.college_d'), image: varnashramCollege },
-    { icon: BookOpen, title: t('features.items.research_t'), description: t('features.items.research_d'), image: vaishnavInstitute },
-    { icon: BookOpen, title: t('features.items.gita_t'), description: t('features.items.gita_d'), image: gitaPathshala },
+
+
+  const lifestyleCategories = [
+    { icon: Baby, title: t('features.items.play_t'), image: playground },
+    { icon: Sun, title: t('features.items.yoga_t'), image: yogaArea },
+    { icon: Target, title: t('features.items.archery_t'), image: archery },
+    { icon: HandHeart, title: t('features.items.gau_t'), image: gauSanctuary, link: 'https://www.nandisanctuary.com/' },
   ];
-
-  const recreation = [
-    { icon: Baby, title: t('features.items.play_t'), description: t('features.items.play_d'), image: playground },
-    { icon: Sun, title: t('features.items.yoga_t'), description: t('features.items.yoga_d'), image: yogaArea },
-    { icon: Target, title: t('features.items.archery_t'), description: t('features.items.archery_d'), image: archery },
-  ];
-
-  const renderCard = (feature: any, index: number) => {
-    const CardContent = (
-      <motion.div
-        key={feature.title}
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, delay: index * 0.05 }}
-        className={`bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group h-full ${feature.link ? 'cursor-pointer' : ''}`}
-      >
-        <div className="h-48 overflow-hidden">
-          <img loading="lazy"
-            src={feature.image}
-            alt={feature.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-          />
-        </div>
-        <div className="p-6">
-          <div className="flex items-start gap-4">
-            <div className="p-3 bg-[#d5b474]/10 rounded-xl">
-              <feature.icon className="w-6 h-6 text-[#d5b474]" />
-            </div>
-            <div>
-              <h3 className="font-heading font-bold text-[#5C3A1E] mb-2">{feature.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    );
-
-    // If a link exists, wrap the entire card in an anchor tag
-    return feature.link ? (
-      <a href={feature.link} target="_blank" rel="noopener noreferrer" className="block">
-        {CardContent}
-      </a>
-    ) : (
-      CardContent
-    );
-  };
-
-  const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-    <div className="text-xl font-heading font-bold text-[#5C3A1E] mt-12 mb-6 border-l-4 border-[#d5b474] pl-4 uppercase tracking-wider">
-      {children}
-    </div>
-  );
 
   return (
-    <section id="features" className="pt-12 pb-20 bg-muted/30" ref={ref}>
+    <section id="features" className="py-20 bg-gradient-to-b from-muted/50 to-white" ref={ref}>
       <div className="container-custom">
         {/* HEADER */}
         <motion.div
@@ -134,64 +147,49 @@ const FeaturesSection = () => {
           </p>
         </motion.div>
 
-        {/* ALWAYS VISIBLE: ECO LIVING */}
-        <SectionTitle>{t('features.eco')}</SectionTitle>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {ecoLiving.map((f, i) => renderCard(f, i))}
+        {/* MAIN GRID */}
+        {/* Order: Amenities, VCF, Eco Living, Recreation */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-0.5 items-start">
+          <CategoryBox 
+            title={t('features.vcf')} 
+            items={vcfCategories} 
+            targetPath="/vcf"
+            isInView={isInView} 
+            delay={0.1}
+          />
+          <CategoryBox 
+            title={t('features.amenities')} 
+            items={amenitiesCategories} 
+            targetPath="/amenities"
+            isInView={isInView} 
+            delay={0.2}
+          />
+          <CategoryBox 
+            title={t('features.eco')} 
+            items={ecoCategories} 
+            targetPath="/eco-living"
+            isInView={isInView} 
+            delay={0.3}
+          />
+          <CategoryBox 
+            title={t('features.rec')} 
+            items={lifestyleCategories} 
+            targetPath="/recreation"
+            isInView={isInView} 
+            delay={0.4}
+          />
         </div>
 
-        {/* TOGGLE BUTTON */}
-        <div className="mt-16 flex justify-center">
-          <button 
-            onClick={() => setShowFullContent(!showFullContent)}
-            className="flex items-center gap-3 bg-[#003366] text-white px-12 py-3.5 rounded-full font-black border-2 border-[#003366] transition-all duration-300 hover:bg-white hover:text-[#003366] shadow-xl active:scale-95"
+        {/* GALLERY CTA */}
+        <div className="flex justify-center mt-16">
+          <Link 
+            to="/gallery" 
+            className="group relative inline-flex items-center gap-3 bg-[#003366] text-white px-12 py-4 rounded-full font-black overflow-hidden shadow-xl hover:shadow-[#003366]/20 transition-all duration-300"
           >
-            {showFullContent ? t('features.btn_less') : t('features.btn_more')}
-            {showFullContent ? <ChevronUp className="w-6 h-6" /> : <ChevronDown className="w-6 h-6" />}
-          </button>
+            <span className="relative z-10">{t('features.btn_gallery')}</span>
+            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity" />
+          </Link>
         </div>
-
-        {/* REVEALED CONTENT */}
-        <AnimatePresence>
-          {showFullContent && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="overflow-hidden"
-            >
-              <SectionTitle>{t('features.amenities')}</SectionTitle>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {amenities.map((f, i) => renderCard(f, i))}
-              </div>
-
-              <SectionTitle>{t('features.devotional')}</SectionTitle>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {devotionalLife.map((f, i) => renderCard(f, i))}
-              </div>
-
-              <SectionTitle>{t('features.edu')}</SectionTitle>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {education.map((f, i) => renderCard(f, i))}
-              </div>
-
-              <SectionTitle>{t('features.rec')}</SectionTitle>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                {recreation.map((f, i) => renderCard(f, i))}
-              </div>
-
-              <div className="flex justify-center pb-12 mt-12">
-                <Link 
-                  to="/gallery" 
-                  className="inline-block bg-[#003366] text-white px-12 py-3.5 rounded-full font-black border-2 border-[#003366] transition-all duration-300 hover:bg-white hover:text-[#003366] shadow-xl active:scale-95"
-                >
-                  {t('features.btn_gallery')}
-                </Link>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </section>
   );

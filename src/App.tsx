@@ -10,6 +10,10 @@ import NotFound from "./pages/NotFound";
 import VillasPage from "./pages/VillasPage";
 import ApartmentsPage from "./pages/ApartmentsPage";
 import MapPage from "./pages/MapPage";
+import AmenitiesPage from "./pages/AmenitiesPage";
+import VCFPage from "./pages/VCFPage";
+import EcoLivingPage from "./pages/EcoLivingPage";
+import RecreationPage from "./pages/RecreationPage";
 import VideoSection from "./components/VideoSection";
 const GallerySection = lazy(() => import("./pages/GallerySection"));
 import ScrollToTop from "./components/ScrollToTop";
@@ -22,7 +26,10 @@ const App = () => (
       <Toaster />
       <Sonner />
 
-      <BrowserRouter>
+      <BrowserRouter future={{ 
+        v7_relativeSplatPath: true,
+        v7_startTransition: true,
+      }}>
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
@@ -34,6 +41,10 @@ const App = () => (
           <Route path="/properties/villas" element={<VillasPage />} />
           <Route path="/properties/apartments" element={<ApartmentsPage />} />
           <Route path="/properties/map" element={<MapPage />} />
+          <Route path="/amenities" element={<AmenitiesPage />} />
+          <Route path="/vcf" element={<VCFPage />} />
+          <Route path="/eco-living" element={<EcoLivingPage />} />
+          <Route path="/recreation" element={<RecreationPage />} />
           <Route path="/video" element={<VideoSection />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

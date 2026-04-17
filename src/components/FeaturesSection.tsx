@@ -112,7 +112,7 @@ const FeaturesSection = () => {
 
   const vcfCategories = [
     { icon: Building, title: t('features.items.temple_t'), image: temple },
-    { icon: Flame, title: t('features.items.yajna_t'), image: yajnaSala },
+    { icon: Flame, title: t('features.items.yajna_t'), image: yajnaSala, link: 'https://yajna-xx.vercel.app/' },
     { icon: BookOpen, title: t('features.items.gita_t'), image: gitaPathshala },
     { icon: GraduationCap, title: t('features.items.college_t'), image: varnashramCollege },
   ];

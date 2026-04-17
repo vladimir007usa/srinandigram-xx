@@ -88,13 +88,15 @@ const VCFPage = () => {
                 {t('features.items.yajna_d')}
               </p>
               <div className="mt-8">
-                <Link 
-                  to="/#contact"
+                <a 
+                  href="https://yajna-xx.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-[#d5b474] text-[#2a1d0d] font-bold rounded-full shadow-lg hover:bg-[#e8ca8a] hover:scale-[1.02] transition-all duration-300 uppercase tracking-widest text-sm"
                 >
                   <Flame className="w-5 h-5" />
                   Book Yajna
-                </Link>
+                </a>
               </div>
             </div>
             <div className="w-full md:w-1/2 order-1 md:order-2">

@@ -72,16 +72,16 @@ const LocationSection = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-2 sm:gap-4">
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  className="p-5 bg-card rounded-xl border border-border/50 hover:shadow-soft transition-shadow"
+                  className="p-3 sm:p-5 bg-card rounded-xl border border-border/50 hover:shadow-soft transition-shadow"
                 >
-                  <div className="p-3 bg-secondary/10 rounded-lg w-fit mb-4">
+                  <div className="p-2 sm:p-3 bg-secondary/10 rounded-lg w-fit mb-4">
                     <benefit.icon className="w-5 h-5 text-secondary" />
                   </div>
                   <h3 className="font-heading font-semibold text-foreground mb-2">

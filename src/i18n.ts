@@ -89,7 +89,7 @@ const resources = {
         h4_d: "Like-minded families in a nurturing environment"
       },
       features: {
-        badge: "WHAT MAKES US SPECIAL",
+        badge: "WHAT MAKES US UNIQUE",
         title_start: "Life at",
         subtitle: "Experience a unique blend of spiritual living, sustainable practices, and modern amenities.",
         btn_more: "Know More",
@@ -407,7 +407,7 @@ const resources = {
         h4_d: "Семьи единомышленников в благоприятной среде"
       },
       features: {
-        badge: "ЧТО ДЕЛАЕТ НАС ОСОБЕННЫМИ",
+        badge: "ЧТО ДЕЛАЕТ НАС УНИКАЛЬНЫМИ",
         title_start: "Жизнь в",
         subtitle: "Испытайте уникальное сочетание духовной жизни, экологических практик и современных удобств.",
         btn_more: "Узнать больше",

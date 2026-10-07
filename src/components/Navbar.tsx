@@ -76,7 +76,7 @@ const Navbar = () => {
 
         {/* LOGO - No changes to scale or positioning */}
         <Link to="/" onClick={(e) => handleNavClick(e, navLinks[0])} className="flex items-center z-50 lg:-ml-28">
-          <img loading="eager" fetchPriority="high" src={logo} alt="Logo" className="h-28 md:h-36 object-contain transition-transform duration-500" width="400" height="150"
+          <img loading="eager" fetchPriority="high" src={logo} alt="Logo" className="h-28 md:h-36 object-contain transition-transform duration-500"
             style={{
               filter: isScrolled || isGalleryPage ? 'none' : 'brightness(1.2)',
               transform: isScrolled || isGalleryPage ? 'scale(1.6)' : 'scale(2.3)',

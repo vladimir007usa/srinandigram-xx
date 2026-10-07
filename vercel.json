@@ -1,4 +1,12 @@
 {
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "srinandigram-xx.vercel.app" }],
+      "destination": "https://nandigram.in/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

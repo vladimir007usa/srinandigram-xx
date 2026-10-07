@@ -55,9 +55,9 @@ const GallerySection = () => {
       <div className="pt-12 pb-20">
         <section id="gallery" ref={ref}>
           <div className="container-custom">
-            
+
             <div className="flex flex-col items-start mb-16">
-              <button 
+              <button
                 onClick={handleBackToHome}
                 type="button"
                 className="flex items-center gap-2 text-[#003366] hover:text-secondary transition-all mb-8 font-bold group bg-white/50 px-4 py-2 rounded-lg border border-[#003366]/10"
@@ -92,17 +92,16 @@ const GallerySection = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
-                  className={`relative overflow-hidden rounded-xl cursor-pointer group shadow-lg ${
-                    index === 0 || index === 5 ? 'md:col-span-2 md:row-span-2' : ''
-                  }`}
+                  className={`relative overflow-hidden rounded-xl cursor-pointer group shadow-lg ${index === 0 || index === 5 ? 'md:col-span-2 md:row-span-2' : ''
+                    }`}
                   onClick={() => setSelectedImage(image.src)}
                 >
                   <img loading="lazy"
                     src={image.src}
                     alt={image.alt}
-                    className={`w-full object-cover group-hover:scale-110 transition-transform duration-700 ${
-                      index === 0 || index === 5 ? 'h-64 md:h-full' : 'h-48 md:h-56'
-                    }`}
+                    className={`w-full object-cover group-hover:scale-110 transition-transform duration-700 ${index === 0 || index === 5 ? 'h-64 md:h-full' : 'h-48 md:h-56'
+                      }`}
+                    width="600" height="400"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
@@ -113,7 +112,7 @@ const GallerySection = () => {
                 </motion.div>
               ))}
             </div>
-            
+
             {/* Horizontal rule and LocationSection removed from here */}
           </div>
         </section>

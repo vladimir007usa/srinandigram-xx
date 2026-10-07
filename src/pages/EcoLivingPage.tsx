@@ -42,10 +42,11 @@ const EcoLivingPage = () => {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <div className="relative h-[40vh]">
-        <img 
-          src={organicGarden} 
-          className="w-full h-full object-cover" 
-          alt="Eco Living" 
+        <img loading="eager" fetchPriority="high"
+          src={organicGarden}
+          className="w-full h-full object-cover"
+          alt="Eco Living"
+          width="1920" height="1080"
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <div className="container-custom text-center">
@@ -72,10 +73,11 @@ const EcoLivingPage = () => {
               className="group bg-card rounded-3xl overflow-hidden shadow-lg border border-border/50 hover:shadow-2xl transition-all duration-500"
             >
               <div className="aspect-video relative overflow-hidden">
-                <img 
-                  src={item.image} 
+                <img loading="lazy"
+                  src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  width="800" height="450"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-4 left-6 flex items-center gap-3">

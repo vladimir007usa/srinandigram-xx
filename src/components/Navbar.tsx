@@ -36,7 +36,7 @@ const Navbar = () => {
       if (location.pathname === '/') {
         e.preventDefault();
         // This line resets the URL to base path without any hash
-        window.history.pushState(null, '', '/'); 
+        window.history.pushState(null, '', '/');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
       return;
@@ -73,10 +73,10 @@ const Navbar = () => {
         h-auto lg:h-[80px]`}
     >
       <nav className="container-custom grid grid-cols-[1fr_auto] lg:grid-cols-[260px_1fr_260px] items-center px-4 lg:px-0 py-2 lg:py-0">
-        
+
         {/* LOGO - No changes to scale or positioning */}
         <Link to="/" onClick={(e) => handleNavClick(e, navLinks[0])} className="flex items-center z-50 lg:-ml-28">
-          <img loading="lazy" src={logo} alt="Logo" className="h-28 md:h-36 object-contain transition-transform duration-500"
+          <img loading="eager" fetchPriority="high" src={logo} alt="Logo" className="h-28 md:h-36 object-contain transition-transform duration-500" width="400" height="150"
             style={{
               filter: isScrolled || isGalleryPage ? 'none' : 'brightness(1.2)',
               transform: isScrolled || isGalleryPage ? 'scale(1.6)' : 'scale(2.3)',
@@ -133,7 +133,7 @@ const Navbar = () => {
                     {t(`nav.${link.id}`, { defaultValue: link.name })}
                   </Link>
                 ))}
-                
+
                 {/* Mobile Language Option */}
                 <hr className="border-gray-100" />
                 <button

@@ -61,7 +61,7 @@ const VillasPage = () => {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <div className="relative h-[60vh]">
-        <img loading="lazy" src={villaImg} className="w-full h-full object-cover" alt="Luxury Villa" />
+        <img loading="lazy" src={villaImg} className="w-full h-full object-cover" alt="Luxury Villa" width="1920" height="1080" />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <div className="container-custom text-center">
             <Link to="/#properties" className="inline-flex items-center text-white mb-6 text-lg md:text-xl">
@@ -127,6 +127,7 @@ const VillasPage = () => {
                             src={img.src}
                             alt={img.alt}
                             className="w-full h-full object-contain p-3"
+                            width="600" height="600"
                           />
                         </motion.div>
                       ))}

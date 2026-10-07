@@ -77,7 +77,7 @@ const ApartmentsPage = () => {
 
       {/* HERO */}
       <div className="relative w-full h-[400px] md:h-[520px] overflow-hidden">
-        <img loading="lazy" src={apartmentHero} className="w-full h-full object-cover" alt="Hero" />
+        <img loading="lazy" src={apartmentHero} className="w-full h-full object-cover" alt="Hero" width="1920" height="1080" />
         <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-6">
           <Link
             to="/#properties"
@@ -134,6 +134,7 @@ const ApartmentsPage = () => {
                       src={img}
                       className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                       alt={`${option.title} view`}
+                      width="600" height="600"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
                   </div>

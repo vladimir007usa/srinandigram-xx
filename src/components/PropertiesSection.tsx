@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Building2, Home, Map, MessageCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-import plotsImg from '@/assets/plots.webp'; 
-import villaImg from '@/assets/villa.webp'; 
+import plotsImg from '@/assets/plots.webp';
+import villaImg from '@/assets/villa.webp';
 import plotsAllocation from '@/assets/plots allocation.webp';
 
 const PropertiesSection = () => {
@@ -95,6 +95,7 @@ const PropertiesSection = () => {
                   src={property.image}
                   alt={property.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  width="600" height="400"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
                 <div className="absolute bottom-4 left-4">

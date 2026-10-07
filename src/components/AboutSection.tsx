@@ -95,11 +95,13 @@ const AboutSection = () => {
                         src={templeImg}
                         alt="Temple"
                         className="w-full h-48 object-cover rounded-xl shadow-soft"
+                        width="800" height="400"
                       />
                       <img loading="lazy"
                         src={gardenImg}
                         alt="Garden"
                         className="w-full h-64 object-cover rounded-xl shadow-soft"
+                        width="800" height="600"
                       />
                     </div>
                     <div className="pt-8">
@@ -107,6 +109,7 @@ const AboutSection = () => {
                         src={villaImg}
                         alt="Villa"
                         className="w-full h-80 object-cover rounded-xl shadow-elevated"
+                        width="800" height="800"
                       />
                     </div>
                   </div>

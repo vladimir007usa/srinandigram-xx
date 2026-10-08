@@ -1,8 +1,24 @@
 {
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "index, follow"
+        }
+      ]
+    }
+  ],
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "srinandigram-xx.vercel.app" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "srinandigram-xx.vercel.app"
+        }
+      ],
       "destination": "https://nandigram.in/$1",
       "permanent": true
     }
